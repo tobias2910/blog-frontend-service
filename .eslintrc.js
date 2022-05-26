@@ -19,5 +19,7 @@ module.exports = {
       controlComponents: ['CustomInput'],
       depth: 3,
     }],
+    'react/function-component-definition': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
   },
 };

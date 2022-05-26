@@ -1,11 +1,20 @@
-import React from 'react';
-
 import '../assets/main.css';
+
+import React from 'react';
+import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 
+import Layout from '../components/common/layout';
+
 function MyApp({ Component, pageProps }: AppProps) {
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider defaultTheme="dark" attribute="class">
+      <Layout>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;
