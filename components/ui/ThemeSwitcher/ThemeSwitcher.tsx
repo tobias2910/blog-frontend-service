@@ -3,7 +3,8 @@ import React, {
 } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import { MdDarkMode, MdLightMode } from 'react-icons/md';
+import { MoonIcon, SunIcon } from '@heroicons/react/solid';
+import Button from '../Button';
 
 /**
  * Provides a styled button that can be used to switch
@@ -29,12 +30,7 @@ const ThemeSwitcher: FC = (): ReactElement => {
   };
 
   return (
-    <div
-      className="rounded border border-teal-400 w-10 h-10 flex justify-center items-center"
-      onClick={handleSwitchModeClick}
-      role="button"
-      tabIndex={0}
-    >
+    <Button size="small" handleOnClick={handleSwitchModeClick}>
       {
       isMounted
         ? (
@@ -44,10 +40,11 @@ const ThemeSwitcher: FC = (): ReactElement => {
                 <motion.div
                   whileHover={{ scale: 1.25 }}
                   whileTap={{ scale: 0.7 }}
-                  animate={{ rotate: 360, scale: 1 }}
+                  animate={{ rotate: 370, scale: 1 }}
                   transition={{ duration: 0.3 }}
+                  title="Activate dark mode"
                 >
-                  <MdDarkMode title="Activate dark mode" key="1" className="fill-teal-400 w-6 h-6" />
+                  <MoonIcon key="1" className="fill-teal-400 w-6 h-6" />
                 </motion.div>
               )
               : (
@@ -56,8 +53,9 @@ const ThemeSwitcher: FC = (): ReactElement => {
                   whileTap={{ scale: 0.7 }}
                   animate={{ rotate: 700 }}
                   transition={{ duration: 0.3 }}
+                  title="Activate light mode"
                 >
-                  <MdLightMode title="Activate light mode" key="2" className="fill-teal-400 w-6 h-6" />
+                  <SunIcon key="2" className="fill-teal-400 w-6 h-6" />
                 </motion.div>
               )}
           </AnimatePresence>
@@ -68,7 +66,7 @@ const ThemeSwitcher: FC = (): ReactElement => {
           </div>
         )
     }
-    </div>
+    </Button>
   );
 };
 

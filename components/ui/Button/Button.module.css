@@ -1,0 +1,11 @@
+.root {
+    @apply rounded border border-teal-400 flex justify-center items-center
+}
+
+.small {
+    @apply w-10 h-10
+}
+
+.medium {
+    @apply w-20 h-10
+}

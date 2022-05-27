@@ -1,13 +1,13 @@
 .root {
-    @apply relative no-underline font-bold cursor-pointer text-4xl;
-}
-
-.selected {
-    @apply font-extrabold
+    @apply relative no-underline font-bold cursor-pointer text-4xl ml-4 mr-4;
 }
 
 .root:before {
-    @apply content-[''] absolute block w-full rounded h-0.5 bottom-0 left-0 bg-teal-400 transform duration-500 ease-in-out scale-x-0
+    @apply content-[''] absolute block w-full rounded h-0.5 bottom-0 left-0 bg-teal-400 transform duration-300 ease-in-out scale-x-0
+}
+
+.selected:before {
+    @apply scale-x-100
 }
 
 .root:hover:before {
