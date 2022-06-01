@@ -1,5 +1,9 @@
 .root {
-    @apply rounded border border-teal-400 flex justify-center items-center
+    @apply rounded border border-teal-400 flex justify-center items-center transition duration-300
+}
+
+.root:focus {
+    @apply outline-none shadow shadow-teal-400
 }
 
 .small {

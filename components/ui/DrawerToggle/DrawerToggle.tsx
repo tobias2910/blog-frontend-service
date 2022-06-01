@@ -8,10 +8,15 @@ interface DrawerToggleProps {
   handleClick: () => void;
 }
 
+/**
+ *
+ * @param {DrawerToggleProps} -
+ * @returns {ReactElement} -
+ */
 const DrawerToggle: FC<DrawerToggleProps> = ({ handleClick, isOpen }) => (
   <Button handleOnClick={handleClick} size="small">
     <motion.div animate={isOpen ? 'open' : 'closed'} whileHover={{ scale: 1.20 }} whileTap={{ scale: 0.80 }}>
-      <svg viewBox="1 -1 20 23" className="stroke-primary w-5 h-5">
+      <svg viewBox="0 -2 20 23" className="stroke-primary w-5 h-5">
         <Path
           variants={{
             closed: { d: 'M 2 2.5 L 20 2.5' },

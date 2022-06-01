@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 const Home: NextPage = () => (
   <div>
     <main>
-      Hello
+      <p>Welcome</p>
     </main>
   </div>
 );

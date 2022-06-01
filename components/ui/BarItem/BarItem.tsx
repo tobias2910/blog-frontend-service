@@ -1,10 +1,15 @@
 import React, { ButtonHTMLAttributes, FC } from 'react';
-import cn from 'classnames';
+import cn from 'clsx';
 import s from './BarItem.module.css';
+
+type UnderlineTypes = 'middle' | 'left';
+type TextSize = 'small' | 'big';
 
 interface BarItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   selected?: boolean;
+  underlineType?: UnderlineTypes;
+  textSize?: TextSize;
   handleOnClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -18,8 +23,17 @@ interface BarItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * @returns {BarItem} - An item that can be used in the navigation bar
  */
 const BarItem: FC <BarItemProps> = (props) => {
-  const { text, selected, handleOnClick } = props;
-  const className = cn(s.root, { [s.selected]: selected });
+  const {
+    text, selected, underlineType, textSize, handleOnClick,
+  } = props;
+  const className = cn(
+    s.root,
+    { [s.selected]: selected },
+    { [s.big]: textSize === 'big' },
+    { [s.small]: textSize === 'small' },
+    { [s.middleUnderline]: underlineType === 'middle' },
+    { [s.leftUnderline]: underlineType === 'left' },
+  );
 
   return (
     <button
@@ -37,6 +51,8 @@ const BarItem: FC <BarItemProps> = (props) => {
 
 BarItem.defaultProps = {
   selected: false,
+  textSize: 'big',
+  underlineType: 'middle',
 };
 
 export default BarItem;
