@@ -3,6 +3,8 @@ import React, { ReactElement, useState } from 'react';
 import Head from '../Head';
 import Navbar from '../Navbar';
 import Drawer from '../Drawer';
+import ClickAwayListener from '../../../lib/ClickAwayListener';
+import Footer from '../Footer';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,22 +27,27 @@ const Layout = (props: LayoutProps): ReactElement => {
   };
 
   return (
-    <>
+    <div>
       <Head />
-      <Navbar
-        navbarItems={pageItems}
-        drawerIsOpen={drawerIsOpen}
-        handleDrawerToggle={handleClick}
-      />
-      <Drawer isOpen={drawerIsOpen} navItems={pageItems} />
-      <main className="w-full">
+      <ClickAwayListener onOutsideClick={handleClick} active={drawerIsOpen}>
+        <div>
+          <Navbar
+            navbarItems={pageItems}
+            drawerIsOpen={drawerIsOpen}
+            handleDrawerToggle={handleClick}
+          />
+          <Drawer isOpen={drawerIsOpen} navItems={pageItems} />
+        </div>
+      </ClickAwayListener>
+      <main className="w-full min-h-[30rem]">
         <div className="flex justify-center">
           <div className="max-w-7xl md:text-base">
             { children }
           </div>
         </div>
       </main>
-    </>
+      <Footer />
+    </div>
   );
 };
 

@@ -1,20 +1,21 @@
-import React, { FC } from 'react';
+import React, { FC, forwardRef, Ref } from 'react';
 import NavigationItems from '../NavigationItems';
 
 interface DrawerProps {
   isOpen: boolean;
   navItems: string[];
+  ref?: Ref<HTMLDivElement>
 }
 
-const Drawer: FC<DrawerProps> = ({ isOpen, navItems }) => (
-  <div className="w-56 fixed flex md:hidden">
+const Drawer: FC<DrawerProps> = forwardRef(({ isOpen, navItems }, forwardedRef) => (
+  <div className="w-40 fixed flex md:hidden">
     {isOpen
       ? (
-        <div className="h-screen backdrop-blur-md animate-fadeIn-left">
+        <div ref={forwardedRef} className="h-screen backdrop-blur-md animate-fadeIn-left">
           <NavigationItems alignment="left" items={navItems} />
         </div>
       ) : null}
   </div>
-);
+));
 
 export default Drawer;

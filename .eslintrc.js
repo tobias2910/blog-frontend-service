@@ -22,5 +22,6 @@ module.exports = {
     'react/function-component-definition': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'no-restricted-exports': 'off',
+    'react/prop-types': 'off',
   },
 };

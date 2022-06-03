@@ -16,7 +16,8 @@ const NavigationItems: FC<NavigationItemsProps> = (props) => {
   const router = useRouter();
 
   const isSelected = (barItemName: string) => (
-    !!(router.asPath.includes(barItemName.toLowerCase()) || (router.asPath === '/' && barItemName === 'Home'))
+    !!(router.asPath.includes(barItemName.toLowerCase())
+      || (router.asPath === '/' && barItemName === 'Home'))
   );
 
   const handleItemOnClick = (event: React.MouseEvent<HTMLButtonElement>) => {
