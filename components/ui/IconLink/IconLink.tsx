@@ -8,14 +8,14 @@ interface IconLinkProps {
   href: string;
   Icon: IconType
   Text: string;
-};
+}
 
 /**
- * 
- * @param param0 
- * @returns 
+ *
+ * @param {IconLinkProps}
+ * @returns
  */
-const IconLink: FC <IconLinkProps> = ({href, Icon, Text}) => {
+const IconLink: FC <IconLinkProps> = ({ href, Icon, Text }) => {
   const className = cn(s.root);
 
   return (
@@ -23,11 +23,12 @@ const IconLink: FC <IconLinkProps> = ({href, Icon, Text}) => {
       href={href}
       className={className}
       target="_blank"
-      rel="noreferrer">
+      rel="noreferrer"
+    >
       <Icon className={className} />
       {Text}
     </a>
-  )
+  );
 };
 
 export default IconLink;
