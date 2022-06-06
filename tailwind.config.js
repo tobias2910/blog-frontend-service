@@ -13,12 +13,13 @@ module.exports = {
         hover: 'var(--hover)',
       },
       textColor: {
-        base: 'var(--text-base)',
+        baseColor: 'var(--text-base)',
         primary: 'var(--text-primary)',
         secondary: 'var(--text-secondary)',
       },
       animation: {
         'fadeIn-left': 'fadeIn-left .3s ease forwards',
+        typingIndicator: 'typingIndicator .7s ease-in infinite',
       },
       keyframes: {
         'fadeIn-left': {
@@ -29,6 +30,14 @@ module.exports = {
           to: {
             opacity: 1,
             transform: 'translate3d(0, 0, 0)',
+          },
+        },
+        typingIndicator: {
+          '0%, 100%': {
+            opacity: 0,
+          },
+          '50%': {
+            opacity: 1,
           },
         },
       },

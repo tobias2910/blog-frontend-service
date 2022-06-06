@@ -1,12 +1,17 @@
 import React from 'react';
 import type { NextPage } from 'next';
+import TypeWritingEffect from '../components/common/TypeWritingEffect';
 
 // eslint-disable-next-line react/function-component-definition
 const Home: NextPage = () => (
-  <div>
-    <main>
-      <p>Welcome</p>
-    </main>
+  <div className="w-full flex justify-center items-center h-screen">
+    <TypeWritingEffect
+      wordList={['Welcome', 'Bienvenidas', 'Willkommen', 'أهلا بك', 'Bienvenue', '欢迎']}
+      typingInterval={100}
+      deletingInterval={50}
+      pausingDuration={3000}
+      className="text-6xl text-center font-semibold"
+    />
   </div>
 );
 

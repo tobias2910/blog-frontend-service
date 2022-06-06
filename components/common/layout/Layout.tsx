@@ -3,7 +3,7 @@ import React, { ReactElement, useState } from 'react';
 import Head from '../Head';
 import Navbar from '../Navbar';
 import Drawer from '../Drawer';
-import ClickAwayListener from '../../../lib/ClickAwayListener';
+import ClickAwayListener from '../ClickAwayListener';
 import Footer from '../Footer';
 
 interface LayoutProps {
@@ -27,7 +27,7 @@ const Layout = (props: LayoutProps): ReactElement => {
   };
 
   return (
-    <div>
+    <div className="bg-primary">
       <Head />
       <ClickAwayListener onOutsideClick={handleClick} active={drawerIsOpen}>
         <div>
