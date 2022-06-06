@@ -8,6 +8,7 @@ module.exports = {
     'airbnb-typescript',
     'plugin:import/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:@next/next/recommended',
   ],
   parserOptions: {
     project: './tsconfig.json',
