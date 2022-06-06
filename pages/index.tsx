@@ -4,7 +4,7 @@ import TypeWritingEffect from '../components/common/TypeWritingEffect';
 
 // eslint-disable-next-line react/function-component-definition
 const Home: NextPage = () => (
-  <div className="w-full flex justify-center items-center h-screen">
+  <div className="w-full flex justify-center items-center h-full">
     <TypeWritingEffect
       wordList={['Welcome', 'Bienvenidas', 'Willkommen', 'أهلا بك', 'Bienvenue', '欢迎']}
       typingInterval={100}

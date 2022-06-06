@@ -29,16 +29,24 @@ const ClickAwayListener: FC<ClickAwayListenerProps> = (props) => {
     }
   };
 
+  const handleKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      onOutsideClick();
+    }
+  };
+
   useEffect(() => {
     if (active) {
       document.addEventListener('mousedown', handleClick);
       document.addEventListener('touchstart', handleClick);
+      document.addEventListener('keydown', handleKeydown);
     }
 
     return () => {
       if (active) {
         document.removeEventListener('mousedown', handleClick);
         document.removeEventListener('touchstart', handleClick);
+        document.removeEventListener('keydown', handleKeydown);
       }
     };
   });

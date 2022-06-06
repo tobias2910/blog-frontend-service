@@ -8,7 +8,7 @@ interface DrawerProps {
 }
 
 const Drawer: FC<DrawerProps> = forwardRef(({ isOpen, navItems }, forwardedRef) => (
-  <div className="w-40 mt-16 fixed flex md:hidden z-[1]">
+  <div className="w-40 fixed flex md:hidden z-[1]">
     {isOpen
       ? (
         <div ref={forwardedRef} className="h-screen backdrop-blur-md animate-fadeIn-left">
