@@ -1,5 +1,5 @@
 .root::after {
-    @apply content-[''] border h-1 border-teal-400
+    @apply content-[''] border h-1 border-secondary
 }
 
 .root.pausing::after{

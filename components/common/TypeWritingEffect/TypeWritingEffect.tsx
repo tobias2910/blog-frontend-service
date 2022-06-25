@@ -41,7 +41,12 @@ const TypeWritingEffect: FC<TypeWritingEffectProps> = ({
   );
 
   return (
-    <span className={innerClassName}>{typeWriteResult.typedWord}</span>
+    <span
+      aria-label={typeWriteResult.currentWord}
+      className={innerClassName}
+    >
+      {typeWriteResult.typedWord}
+    </span>
   );
 };
 

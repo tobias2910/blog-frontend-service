@@ -44,7 +44,7 @@ const ThemeSwitcher: FC = (): ReactElement => {
                   transition={{ duration: 0.3 }}
                   title="Activate dark mode"
                 >
-                  <MoonIcon key="1" className="fill-teal-400 w-6 h-6" />
+                  <MoonIcon key="1" className="fill-secondary w-6 h-6" />
                 </motion.div>
               )
               : (
@@ -55,14 +55,14 @@ const ThemeSwitcher: FC = (): ReactElement => {
                   transition={{ duration: 0.3 }}
                   title="Activate light mode"
                 >
-                  <SunIcon key="2" className="fill-teal-400 w-6 h-6" />
+                  <SunIcon key="2" className="fill-secondary w-6 h-6" />
                 </motion.div>
               )}
           </AnimatePresence>
         )
         : (
           <div className="animate-pulse flex w-6 h-6 justify-center items-center">
-            <div className="rounded-full bg-teal-400 w-2 h-2" />
+            <div className="rounded-full bg-secondary w-2 h-2" />
           </div>
         )
     }

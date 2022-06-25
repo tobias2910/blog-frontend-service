@@ -1,0 +1,11 @@
+.root {
+    @apply w-5 h-5 md:h-7 md:w-7 animate-bounce transform duration-500
+}
+
+.visible {
+    @apply opacity-70
+}
+
+.hidden {
+    @apply opacity-0
+}

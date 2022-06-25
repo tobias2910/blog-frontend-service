@@ -1,0 +1,15 @@
+.root {
+    @apply outline-none h-6 w-6 border border-secondary-2 rounded-xl transition duration-200 ml-1 mt-1 mr-3 cursor-pointer
+}
+
+.root:hover {
+    @apply border-secondary-2
+}
+
+.root:focus {
+    @apply border-secondary-2
+}
+
+.root:checked {
+    @apply stroke-primary-2 bg-secondary
+}

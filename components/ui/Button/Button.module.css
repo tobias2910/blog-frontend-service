@@ -1,9 +1,9 @@
 .root {
-    @apply rounded border border-teal-400 flex justify-center items-center transition duration-300
+    @apply rounded border border-secondary flex justify-center items-center duration-500 outline-none 
 }
 
 .root:focus {
-    @apply outline-none shadow shadow-teal-400
+    @apply border-secondary shadow shadow-secondary
 }
 
 .small {
@@ -12,4 +12,12 @@
 
 .medium {
     @apply w-20 h-10
+}
+
+.large {
+    @apply border-2 w-32 md:w-48 h-12
+}
+
+.large:hover {
+    @apply border-secondary-2 shadow-secondary-2
 }

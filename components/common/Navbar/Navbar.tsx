@@ -13,10 +13,10 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = forwardRef(
   ({ navbarItems, drawerIsOpen, handleDrawerToggle }, forwardedRef) => (
-    <div className="h-16 z-[1]">
-      <nav ref={forwardedRef} className="flex justify-center fixed top-0 w-full">
+    <div className="h-16 z-[100] relative">
+      <nav ref={forwardedRef} className="backdrop-blur-md flex justify-center fixed top-0 w-full">
         <div className="max-w-3xl w-full">
-          <div className="flex w-full backdrop-blur-md">
+          <div className="flex w-full">
             <NavigationItems items={navbarItems} alignment="middle" />
             <div className="my-3 mx-2 block md:hidden">
               <DrawerToggle handleClick={handleDrawerToggle} isOpen={drawerIsOpen} />

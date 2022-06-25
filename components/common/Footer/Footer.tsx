@@ -10,7 +10,7 @@ import IconLink from '../../ui/IconLink';
 const Footer: FC = () => (
   <div className="flex justify-center sticky bottom-0 w-full h-16 m-auto backdrop-blur-md z-[1]">
     <div className="max-w-sm md:max-w-3xl w-full">
-      <hr className="my-2 w-full mx-auto border-teal-400" />
+      <hr className="my-2 w-full mx-auto border-secondary" />
       <ul className="table align-middle m-auto">
         <li className="table-cell">
           <IconLink Icon={AiFillGithub} Text="GitHub" href="https://github.com/tobias2910" />

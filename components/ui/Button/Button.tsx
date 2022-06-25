@@ -6,7 +6,7 @@ type ButtonSizes = 'small' | 'medium' | 'large';
 
 interface ButtonProps {
   children: ReactElement;
-  handleOnClick: () => void;
+  handleOnClick: (e?: any) => void;
   size?: ButtonSizes;
   ariaLabel?: string;
 }
@@ -17,11 +17,10 @@ interface ButtonProps {
  * @param {ButtonProps} props - The button props
  * @returns {ReactElement} - The styled button
  */
-const Button: FC<ButtonProps> = (props: ButtonProps): ReactElement => {
-  const {
-    children, handleOnClick, size, ariaLabel,
-  } = props;
-  const className = cn(s.root, { [s.small]: size === 'small' });
+const Button: FC<ButtonProps> = ({
+  children, handleOnClick, size, ariaLabel,
+}): ReactElement => {
+  const className = cn(s.root, s[size!]);
 
   return (
     <button

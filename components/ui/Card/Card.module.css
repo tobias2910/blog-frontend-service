@@ -1,0 +1,3 @@
+.root {
+    @apply rounded-lg bg-primary w-full h-full border-2 border-secondary-2 p-4 duration-500
+}

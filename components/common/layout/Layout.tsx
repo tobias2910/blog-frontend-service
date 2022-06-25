@@ -39,11 +39,11 @@ const Layout = (props: LayoutProps): ReactElement => {
           <Drawer isOpen={drawerIsOpen} navItems={pageItems} />
         </div>
       </ClickAwayListener>
-      <main className="w-full md:text-base min-h-screen flex justify-center">
-        <div className="max-w-7xl">
+      <div className="w-full min-h-screen h-full flex justify-center py-3">
+        <div className="max-w-4xl h-auto px-3">
           { children }
         </div>
-      </main>
+      </div>
       <Footer />
     </div>
   );

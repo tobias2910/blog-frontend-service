@@ -1,8 +1,8 @@
 :root {
     --primary: white;
-    --primary-2: #d3d0cb;
-    --secondary: #EDCAB0;
-    --secondary-2: #e7bb41;
+    --primary-2: black;
+    --secondary: #19e3e3;
+    --secondary-2: #ef76f5;
     --hover: #44bba4;
     --text-base: #000000;
     --text-primary: #000000;
@@ -13,11 +13,21 @@
 
 [data-theme='dark'] {
     --primary: black;
-    --primary-2: #26547D;
-    --secondary: #617073;
-    --secondary-2: #92BCEA;
+    --primary-2: white;
+    --secondary: #19e3e3;
+    --secondary-2: #ef76f5;
     --hover: #afb3f7;
     --text-base: white;
     --text-primary: white;
     --text-secondary: black;
+}
+
+/* Replace default browser styling for auto fill fields */
+input:-webkit-autofill, input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--primary) inset;
+    -webkit-text-fill-color: var(--text-base);
+}
+
+input::-webkit-contacts-auto-fill-button {
+    background-color: var(--text-base);
 }
