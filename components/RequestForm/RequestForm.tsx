@@ -1,5 +1,5 @@
 import React, {
-  ChangeEvent, FC, useReducer, useState,
+  ChangeEvent, FC, useMemo, useReducer, useState,
 } from 'react';
 
 import inputFormReducer, { initState } from './reducerFunction';
@@ -8,7 +8,11 @@ import Card from '../ui/Card';
 import Checkbox from '../ui/Checkbox';
 import Input from '../ui/Input';
 import Modal from '../ui/Modal';
-import { Failed, Successful } from '../common/Responses';
+import { Failed, Loading, Successful } from '../common/Responses';
+
+export interface SendMail {
+  sendSuccessful: boolean;
+}
 
 /**
  *
@@ -16,7 +20,7 @@ import { Failed, Successful } from '../common/Responses';
  */
 const RequestForm: FC = () => {
   const [state, dispatcher] = useReducer(inputFormReducer, initState);
-  const [response, setResponse] = useState({});
+  const [response, setResponse] = useState<SendMail | {}>({});
   const [showModal, setShowModal] = useState(false);
 
   const handleModalClose = () => {
@@ -30,6 +34,7 @@ const RequestForm: FC = () => {
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     if (Object.values(state).every((fieldData) => fieldData.isValid)) {
+      setShowModal(true);
       const result = await fetch('/api/sendMail', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
@@ -40,7 +45,6 @@ const RequestForm: FC = () => {
           description: state.description.value,
         }),
       });
-      setShowModal(true);
       setResponse(await result.json());
     } else {
       dispatcher({
@@ -61,6 +65,20 @@ const RequestForm: FC = () => {
     });
   });
 
+  const responseStatus = useMemo(() => {
+    switch ((response as SendMail).sendSuccessful) {
+      case (true): {
+        return <Successful text="Request successfully submitted" />;
+      }
+      case (false): {
+        return <Failed text="Error submitting the request. Please try again later" />;
+      }
+      default: {
+        return <Loading text="" />;
+      }
+    }
+  }, [response]);
+
   const handleOnFocus = ((e: FocusEvent) => {
     const fieldName = (e.target as HTMLInputElement).id;
     if (!state[fieldName].visited) {
@@ -78,9 +96,7 @@ const RequestForm: FC = () => {
       {showModal
         ? (
           <Modal handleClose={handleModalClose}>
-            {response
-              ? <Successful text="Request successfully submitted" />
-              : <Failed text="Error submitting the request. Please try again later" />}
+            {responseStatus}
           </Modal>
         )
         : null }

@@ -5,39 +5,40 @@ import TypeWritingEffect from '../components/common/TypeWritingEffect';
 import Introduction from '../components/Introduction';
 import ArrowDown from '../components/common/ArrowDown';
 import SkillOverview from '../components/SkillOverview';
+import { SkillData } from '../typings/skillData';
 
 // This is mockup data for the time being, the API is not implemented
-const mockupSkills = {
+const mockupSkills: SkillData = {
   languages: [
-    { id: 123, value: 'CSS' },
-    { id: 234, value: 'HTML' },
-    { id: 345, value: 'Python' },
-    { id: 456, value: 'TypeScript' },
+    { id: 123, value: 'CSS', experience: 'high' },
+    { id: 234, value: 'HTML', experience: 'high' },
+    { id: 345, value: 'Python', experience: 'normal' },
+    { id: 456, value: 'TypeScript', experience: 'high' },
   ],
   frameworks: [
-    { id: 567, value: 'Express.js' },
-    { id: 568, value: 'Flask' },
-    { id: 569, value: 'Flair NLP' },
-    { id: 789, value: 'MS Bot Framework' },
-    { id: 912, value: 'Next.js' },
-    { id: 913, value: 'OpenAPI' },
-    { id: 914, value: 'React.js' },
+    { id: 567, value: 'Express.js', experience: 'high' },
+    { id: 568, value: 'Flask', experience: 'normal' },
+    { id: 569, value: 'Flair NLP', experience: 'normal' },
+    { id: 789, value: 'MS Bot Framework', experience: 'high' },
+    { id: 912, value: 'Next.js', experience: 'high' },
+    { id: 913, value: 'OpenAPI', experience: 'high' },
+    { id: 914, value: 'React.js', experience: 'high' },
   ],
   technologies: [
-    { id: 915, value: 'Cloud' },
-    { id: 916, value: 'Docker' },
-    { id: 918, value: 'MongoDB' },
-    { id: 919, value: 'Nginx' },
-    { id: 920, value: 'NodeJS' },
-    { id: 922, value: 'RabbitMQ' },
-    { id: 921, value: 'SQL' },
-    { id: 923, value: 'REST APIs' },
-    { id: 924, value: 'Redis' },
+    { id: 915, value: 'Cloud', experience: 'high' },
+    { id: 916, value: 'Docker', experience: 'high' },
+    { id: 918, value: 'MongoDB', experience: 'high' },
+    { id: 919, value: 'Nginx', experience: 'high' },
+    { id: 920, value: 'NodeJS', experience: 'high' },
+    { id: 922, value: 'RabbitMQ', experience: 'high' },
+    { id: 921, value: 'SQL', experience: 'high' },
+    { id: 923, value: 'REST APIs', experience: 'high' },
+    { id: 924, value: 'Redis', experience: 'normal' },
   ],
   methodologies: [
-    { id: 925, value: 'BPMN' },
-    { id: 926, value: 'DevOps' },
-    { id: 927, value: 'Scrum' },
+    { id: 925, value: 'BPMN', experience: 'high' },
+    { id: 926, value: 'DevOps', experience: 'normal' },
+    { id: 927, value: 'Scrum', experience: 'normal' },
   ],
 };
 

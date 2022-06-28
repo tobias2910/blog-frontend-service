@@ -8,4 +8,7 @@ export interface SkillData {
 export interface Skill {
   id: number;
   value: string;
+  experience: ExperienceLevel;
 }
+
+type ExperienceLevel = 'high' | 'normal';

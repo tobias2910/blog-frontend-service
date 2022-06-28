@@ -6,6 +6,11 @@ const mailjet = new Mailjet({
   apiSecret: process.env.MAILJET_SECRET_KEY,
 });
 
+/**
+ *
+ * @param {NextApiRequest} req
+ * @param {NextApiResponse} res
+ */
 const sendMail = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const mailOptions = {

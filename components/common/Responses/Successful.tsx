@@ -5,6 +5,11 @@ interface SuccessfulProps {
   text: string;
 }
 
+/**
+ *
+ * @param
+ * @returns
+ */
 const Successful: FC<SuccessfulProps> = ({ text }) => (
   <div className="w-full flex flex-col">
     <svg className={s.body} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">

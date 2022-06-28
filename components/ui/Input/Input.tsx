@@ -42,7 +42,7 @@ const Input: FC<InputProps> = (props) => {
         value={value}
         placeholder={label}
         onChange={handleOnChange}
-        onFocus={handleOnFocus}
+        onBlur={handleOnFocus}
         className={className}
         id={id}
         autoComplete="off"
