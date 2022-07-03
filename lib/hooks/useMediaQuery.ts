@@ -32,6 +32,9 @@ const useMediaQuery = (mediaQuerySize: MediaQuerySizes): boolean => {
 
   useEffect(() => {
     const smallBreakpointNr: any = smallBreakpoint.split('px')[0];
+
+    if (windowWidth === 0) setWindowWidth(window.innerWidth);
+
     if (windowWidth <= smallBreakpointNr) {
       setIsSmallBreakpoint(true);
     } else {

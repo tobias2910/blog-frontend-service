@@ -22,7 +22,7 @@ const mockupSkills: SkillData = {
     { id: 567, value: 'Express.js', experience: 'high' },
     { id: 568, value: 'Flask', experience: 'normal' },
     { id: 569, value: 'Flair NLP', experience: 'normal' },
-    { id: 789, value: 'MS Bot Framework', experience: 'high' },
+    { id: 789, value: 'Bot Framework', experience: 'high' },
     { id: 912, value: 'Next.js', experience: 'high' },
     { id: 913, value: 'OpenAPI', experience: 'high' },
     { id: 914, value: 'React.js', experience: 'high' },

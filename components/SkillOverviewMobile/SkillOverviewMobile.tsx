@@ -43,7 +43,7 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
     if (isOnScreen) {
       timer = setTimeout(() => {
         setCurrentItem((prevItem) => (prevItem === itemArray.length - 1 ? 0 : prevItem + 1));
-      }, 800);
+      }, 1500);
     }
 
     return () => clearTimeout(timer);
@@ -76,7 +76,7 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
           exit: s.exit,
           exitActive: s['exit-active'],
         }}
-        timeout={800}
+        timeout={400}
       >
         <span
           ref={nodeRef}
@@ -94,7 +94,7 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
   return (
     <div
       ref={skillTableRef}
-      className="flex flex-nowrap text-xl md:text-4xl items-center justify-between p-16 w-full h-full rounded-lg border-2 border-secondary-2"
+      className="flex flex-nowrap text-xl md:text-4xl items-center justify-between py-16 w-full h-full rounded-lg border-2 border-secondary-2"
     >
       {currentCategory}
       {currentSkill}
