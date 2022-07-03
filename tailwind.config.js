@@ -19,7 +19,8 @@ module.exports = {
       },
       animation: {
         'fadeIn-left': 'fadeIn-left .3s ease forwards',
-        'fadeIn-up': 'fadeIn-up 2s ease forwards',
+        'fadeIn-up': 'fadeIn-up 1.5s ease forwards',
+        'fadeIn-down': 'fadeIn-down 1s ease forwards',
         typingIndicator: 'typingIndicator .7s ease-in infinite',
       },
       keyframes: {
@@ -36,11 +37,21 @@ module.exports = {
         'fadeIn-up': {
           from: {
             opacity: 0,
-            transform: 'translate3d(0, 50%, 0)',
+            transform: 'translate3d(0, 100%, 0)',
           },
           to: {
             opacity: 1,
             transform: 'translate3d(0, 0, 0)',
+          },
+        },
+        'fadeIn-down': {
+          from: {
+            opacity: 1,
+            transform: 'translate3d(0, 0, 0)',
+          },
+          to: {
+            opacity: 0,
+            transform: 'translate3d(0, -100%, 0)',
           },
         },
         typingIndicator: {

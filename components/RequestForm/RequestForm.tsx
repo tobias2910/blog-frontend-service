@@ -92,7 +92,7 @@ const RequestForm: FC = () => {
   });
 
   return (
-    <div className="w-full max-w-sm md:max-w-lg">
+    <div className="w-full max-w-md md:max-w-lg">
       {showModal
         ? (
           <Modal handleClose={handleModalClose}>
