@@ -50,7 +50,7 @@ const Home: NextPage = () => {
   const isSmallMediaQuery = useMediaQuery('sm');
 
   return (
-    <div className="z-0">
+    <article className="z-0">
       <div className="flex-col justify-center w-full h-[95vh]">
         <div className="flex justify-center items-center h-[70%]">
           <TypeWritingEffect
@@ -104,7 +104,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

@@ -1,4 +1,4 @@
-import { RefObject, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 
 /**
  * This hook observes the provided element for the 'mouseenter'
@@ -15,10 +15,19 @@ const useHover = <T extends HTMLElement> (ref: RefObject<T>): boolean => {
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
-  if (ref.current) {
-    ref.current.addEventListener('mouseenter', handleMouseEnter);
-    ref.current.addEventListener('mouseleave', handleMouseLeave);
-  }
+  useEffect(() => {
+    const outerRef = ref.current;
+
+    if (outerRef) {
+      outerRef.addEventListener('mouseenter', handleMouseEnter);
+      outerRef.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      outerRef?.removeEventListener('mouseenter', handleMouseEnter);
+      outerRef?.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [ref]);
 
   return isHovered;
 };
