@@ -9,6 +9,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@next/next/recommended',
+    'prettier',
   ],
   parserOptions: {
     project: './tsconfig.json',
