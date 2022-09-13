@@ -1,14 +1,14 @@
-import React from 'react';
-import type { NextPage } from 'next';
+import React from 'react'
+import type { NextPage } from 'next'
 
-import TypeWritingEffect from '../components/common/TypeWritingEffect';
-import Introduction from '../components/Introduction';
-import ArrowDown from '../components/common/ArrowDown';
-import { SkillData } from '../typings/skillData';
-import SkillOverviewMobile from '../components/SkillOverviewMobile';
-import SkillOverviewDesktop from '../components/SkillOverviewDesktop';
-import StyledParagraph from '../components/ui/StyledParagraph';
-import useMediaQuery from '../lib/hooks/useMediaQuery';
+import TypeWritingEffect from '../components/common/TypeWritingEffect'
+import Introduction from '../components/Introduction'
+import ArrowDown from '../components/common/ArrowDown'
+import { SkillData } from '../typings/skillData'
+import SkillOverviewMobile from '../components/SkillOverviewMobile'
+import SkillOverviewDesktop from '../components/SkillOverviewDesktop'
+import StyledParagraph from '../components/ui/StyledParagraph'
+import useMediaQuery from '../lib/hooks/useMediaQuery'
 
 // This is mockup data for the time being, the API is not implemented
 const mockupSkills: SkillData = {
@@ -43,18 +43,25 @@ const mockupSkills: SkillData = {
     { id: 926, value: 'DevOps', experience: 'normal' },
     { id: 927, value: 'Scrum', experience: 'normal' },
   ],
-};
+}
 
 // eslint-disable-next-line react/function-component-definition
 const Home: NextPage = () => {
-  const isSmallMediaQuery = useMediaQuery('sm');
+  const isSmallMediaQuery = useMediaQuery('sm')
 
   return (
     <article className="z-0">
       <div className="flex-col justify-center w-full h-[95vh]">
         <div className="flex justify-center items-center h-[70%]">
           <TypeWritingEffect
-            wordList={['Welcome', 'Bienvenidas', 'Willkommen', 'أهلا بك', 'Bienvenue', '欢迎']}
+            wordList={[
+              'Welcome',
+              'Bienvenidas',
+              'Willkommen',
+              'أهلا بك',
+              'Bienvenue',
+              '欢迎',
+            ]}
             typingInterval={100}
             deletingInterval={50}
             pausingDuration={3000}
@@ -77,35 +84,34 @@ const Home: NextPage = () => {
           </p>
           <div className="grid gap-5">
             <StyledParagraph>
-              Over the last few years I worked on several projects during my studies, in my daily
-              work life as well as in my free time. This allowed me to collect and build experience
-              in different technologies, frameworks and methodologies 👨‍🎓.
+              Over the last few years I worked on several projects during my
+              studies, in my daily work life as well as in my free time. This
+              allowed me to collect and build experience in different
+              technologies, frameworks and methodologies 👨‍🎓.
             </StyledParagraph>
             <StyledParagraph>
               Here is a summary of the most important ones:
             </StyledParagraph>
           </div>
-          {!isSmallMediaQuery
-            ? <SkillOverviewDesktop skillData={mockupSkills} />
-            : <SkillOverviewMobile skillData={mockupSkills} />}
+          {!isSmallMediaQuery ? (
+            <SkillOverviewDesktop skillData={mockupSkills} />
+          ) : (
+            <SkillOverviewMobile skillData={mockupSkills} />
+          )}
           <div className="flex justify-center items-center -mt-5">
             <svg className=" w-4 h-4 rounded bg-secondary mr-2">
               <rect />
             </svg>
-            <span className="mr-5">
-              Experienced
-            </span>
+            <span className="mr-5">Experienced</span>
             <svg className="ml-2 w-4 h-4 rounded bg-secondary-2 mr-2">
               <rect />
             </svg>
-            <span>
-              Highly experienced
-            </span>
+            <span>Highly experienced</span>
           </div>
         </div>
       </div>
     </article>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
