@@ -15,8 +15,8 @@ type MediaQuerySizes = 'sm' | 'md' | 'lg' | 'xl'
 const useMediaQuery = (mediaQuerySize: MediaQuerySizes): boolean => {
   // @ts-ignore
   const fullConfig = resolveConfig(tailwindConfig)
-  // @ts-ignore
   const [smallBreakpoint] = useState<string>(
+    // @ts-ignore
     fullConfig.theme.screens[mediaQuerySize]
   )
   const [windowWidth, setWindowWidth] = useState(0)
