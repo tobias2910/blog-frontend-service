@@ -29,9 +29,9 @@ jobs:
       
       - name: Run the E2E tests
         uses: cypress-io/github-action@v4.2.0
-        run: |
-          pnpm run build
-          pnpm run start
+        with:
+          build: pnpm run build
+          start: pnpm run start
         env:
           REQUEST_RECEIVER_MAIL: ${{ secrets.REQUEST_RECEIVER_MAIL }}
           MAILJET_API_KEY: ${{ secrets.MAILJET_API_KEY }}
