@@ -27,7 +27,7 @@ jobs:
         run: pnpm install
 
       - name: Run Prettier
-        run: npx prettier --write
+        run: npx prettier . --write
 
       - name: Run ESLint
         run: npx eslint --fix

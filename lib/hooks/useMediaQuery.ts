@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import resolveConfig from 'tailwindcss/resolveConfig';
-import tailwindConfig from '../../tailwind.config';
+import { useState, useEffect } from 'react'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '../../tailwind.config'
 
-type MediaQuerySizes = 'sm' | 'md' | 'lg' | 'xl';
+type MediaQuerySizes = 'sm' | 'md' | 'lg' | 'xl'
 
 /**
  * This hook provides the information, whether the window reached
@@ -14,35 +14,37 @@ type MediaQuerySizes = 'sm' | 'md' | 'lg' | 'xl';
  */
 const useMediaQuery = (mediaQuerySize: MediaQuerySizes): boolean => {
   // @ts-ignore
-  const fullConfig = resolveConfig(tailwindConfig);
+  const fullConfig = resolveConfig(tailwindConfig)
   // @ts-ignore
-  const [smallBreakpoint] = useState<string>(fullConfig.theme.screens[mediaQuerySize]);
-  const [windowWidth, setWindowWidth] = useState(0);
-  const [isSmallBreakpoint, setIsSmallBreakpoint] = useState(false);
+  const [smallBreakpoint] = useState<string>(
+    fullConfig.theme.screens[mediaQuerySize]
+  )
+  const [windowWidth, setWindowWidth] = useState(0)
+  const [isSmallBreakpoint, setIsSmallBreakpoint] = useState(false)
 
   const handleWindowResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
+    setWindowWidth(window.innerWidth)
+  }
 
   useEffect(() => {
-    window.addEventListener('resize', handleWindowResize);
+    window.addEventListener('resize', handleWindowResize)
 
-    return () => window.removeEventListener('resize', handleWindowResize);
-  });
+    return () => window.removeEventListener('resize', handleWindowResize)
+  })
 
   useEffect(() => {
-    const smallBreakpointNr: any = smallBreakpoint.split('px')[0];
+    const smallBreakpointNr: any = smallBreakpoint.split('px')[0]
 
-    if (windowWidth === 0) setWindowWidth(window.innerWidth);
+    if (windowWidth === 0) setWindowWidth(window.innerWidth)
 
     if (windowWidth <= smallBreakpointNr) {
-      setIsSmallBreakpoint(true);
+      setIsSmallBreakpoint(true)
     } else {
-      setIsSmallBreakpoint(false);
+      setIsSmallBreakpoint(false)
     }
-  }, [windowWidth, smallBreakpoint]);
+  }, [windowWidth, smallBreakpoint])
 
-  return isSmallBreakpoint;
-};
+  return isSmallBreakpoint
+}
 
-export default useMediaQuery;
+export default useMediaQuery

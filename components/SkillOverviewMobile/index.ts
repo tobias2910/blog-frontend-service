@@ -1,1 +1,1 @@
-export { default } from './SkillOverviewMobile';
+export { default } from './SkillOverviewMobile'

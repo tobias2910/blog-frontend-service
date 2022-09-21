@@ -1,1 +1,1 @@
-export { default } from './SkillOverviewDesktop';
+export { default } from './SkillOverviewDesktop'

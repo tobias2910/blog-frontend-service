@@ -1,1 +1,1 @@
-export { default } from './StyledParagraph';
+export { default } from './StyledParagraph'

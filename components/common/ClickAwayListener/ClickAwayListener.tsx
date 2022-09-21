@@ -1,11 +1,9 @@
-import React, {
-  cloneElement, FC, ReactElement, useEffect, useRef,
-} from 'react';
+import React, { cloneElement, FC, ReactElement, useEffect, useRef } from 'react'
 
 interface ClickAwayListenerProps {
-  active?: boolean;
-  children: ReactElement;
-  onOutsideClick: (event?: MouseEvent) => void;
+  active?: boolean
+  children: ReactElement
+  onOutsideClick: (event?: MouseEvent) => void
 }
 
 /**
@@ -20,46 +18,42 @@ interface ClickAwayListenerProps {
  * @returns {ReactElement} - The ClickAwayListener element
  */
 const ClickAwayListener: FC<ClickAwayListenerProps> = (props) => {
-  const { active, onOutsideClick, children } = props;
-  const innerRef = useRef<HTMLDivElement>(null);
+  const { active, onOutsideClick, children } = props
+  const innerRef = useRef<HTMLDivElement>(null)
 
   const handleClick = (event: MouseEvent | TouchEvent) => {
     if (innerRef.current && !innerRef.current.contains(event.target as Node)) {
-      onOutsideClick();
+      onOutsideClick()
     }
-  };
+  }
 
   const handleKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      onOutsideClick();
+      onOutsideClick()
     }
-  };
+  }
 
   useEffect(() => {
     if (active) {
-      document.addEventListener('mousedown', handleClick);
-      document.addEventListener('touchstart', handleClick);
-      document.addEventListener('keydown', handleKeydown);
+      document.addEventListener('mousedown', handleClick)
+      document.addEventListener('touchstart', handleClick)
+      document.addEventListener('keydown', handleKeydown)
     }
 
     return () => {
       if (active) {
-        document.removeEventListener('mousedown', handleClick);
-        document.removeEventListener('touchstart', handleClick);
-        document.removeEventListener('keydown', handleKeydown);
+        document.removeEventListener('mousedown', handleClick)
+        document.removeEventListener('touchstart', handleClick)
+        document.removeEventListener('keydown', handleKeydown)
       }
-    };
-  });
+    }
+  })
 
-  return (
-    <>
-      {cloneElement(children, { ref: innerRef })}
-    </>
-  );
-};
+  return <>{cloneElement(children, { ref: innerRef })}</>
+}
 
 ClickAwayListener.defaultProps = {
   active: true,
-};
+}
 
-export default ClickAwayListener;
+export default ClickAwayListener

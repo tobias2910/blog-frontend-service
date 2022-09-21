@@ -1,1 +1,1 @@
-export { default } from './TypeWritingEffect';
+export { default } from './TypeWritingEffect'

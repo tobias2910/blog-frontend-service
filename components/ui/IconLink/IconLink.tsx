@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
-import { IconType } from 'react-icons';
+import React, { FC } from 'react'
+import { IconType } from 'react-icons'
 
-import s from './IconLink.module.css';
+import s from './IconLink.module.css'
 
 interface IconLinkProps {
-  href: string;
+  href: string
   Icon: IconType
-  Text: string;
+  Text: string
 }
 
 /**
@@ -14,7 +14,7 @@ interface IconLinkProps {
  * @param {IconLinkProps}
  * @returns
  */
-const IconLink: FC <IconLinkProps> = ({ href, Icon, Text }) => (
+const IconLink: FC<IconLinkProps> = ({ href, Icon, Text }) => (
   <a
     href={href}
     className={s.root}
@@ -25,6 +25,6 @@ const IconLink: FC <IconLinkProps> = ({ href, Icon, Text }) => (
     <Icon className={s.root} />
     {Text}
   </a>
-);
+)
 
-export default IconLink;
+export default IconLink
