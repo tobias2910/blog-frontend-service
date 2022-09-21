@@ -35,3 +35,9 @@ jobs:
           REQUEST_RECEIVER_MAIL: $${ secrets.REQUEST_RECEIVER_MAIL }
           MAILJET_API_KEY: $${ secrets.MAILJET_API_KEY }
           MAILJET_SECRET_KEY: $${ secrets.MAILJET_SECRET_KEY }
+
+      - name: Download the screenshot
+        uses: actions/download-artifact@v3
+        with:
+          name: error_screenshot.png
+          path: /home/runner/work/blog-frontend-service/blog-frontend-service/cypress/screenshots/request/request_form.cy.ts/request form -- allows to submit the form (failed).png
