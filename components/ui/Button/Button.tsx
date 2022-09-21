@@ -1,14 +1,14 @@
-import React, { FC, ReactElement } from 'react';
-import cn from 'clsx';
-import s from './Button.module.css';
+import React, { FC, ReactElement } from 'react'
+import cn from 'clsx'
+import s from './Button.module.css'
 
-type ButtonSizes = 'small' | 'medium' | 'large';
+type ButtonSizes = 'small' | 'medium' | 'large'
 
 interface ButtonProps {
-  children: ReactElement;
-  handleOnClick: (e?: any) => void;
-  size?: ButtonSizes;
-  ariaLabel?: string;
+  children: ReactElement
+  handleOnClick: (e?: any) => void
+  size?: ButtonSizes
+  ariaLabel?: string
 }
 
 /**
@@ -18,9 +18,12 @@ interface ButtonProps {
  * @returns {ReactElement} - The styled button
  */
 const Button: FC<ButtonProps> = ({
-  children, handleOnClick, size, ariaLabel,
+  children,
+  handleOnClick,
+  size,
+  ariaLabel,
 }): ReactElement => {
-  const className = cn(s.root, s[size!]);
+  const className = cn(s.root, s[size!])
 
   return (
     <button
@@ -32,12 +35,12 @@ const Button: FC<ButtonProps> = ({
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
 Button.defaultProps = {
   size: 'medium',
   ariaLabel: 'Button',
-};
+}
 
-export default Button;
+export default Button

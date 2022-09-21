@@ -1,6 +1,6 @@
-import React from 'react';
-import type { FC } from 'react';
-import SEO from '../SEO';
+import React from 'react'
+import type { FC } from 'react'
+import SEO from '../SEO'
 
 /**
  * Return the meta information for the website
@@ -16,6 +16,6 @@ const Head: FC = () => (
     />
     {/* <link rel="manifest" href="/site.webmanifest" key="site-manifest" /> */}
   </SEO>
-);
+)
 
-export default Head;
+export default Head

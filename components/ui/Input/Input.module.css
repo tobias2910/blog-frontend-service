@@ -1,15 +1,15 @@
 .root {
-    @apply rounded bg-primary border-2 border-secondary w-full transition appearance-none ease-in-out indent-3 leading-tight py-2 px-3 duration-500
+  @apply rounded bg-primary border-2 border-secondary w-full transition appearance-none ease-in-out indent-3 leading-tight py-2 px-3 duration-500;
 }
 
 .root:focus {
-    @apply outline-none border-2 border-secondary-2
+  @apply outline-none border-2 border-secondary-2;
 }
 
 .error::after {
-    @apply content-[attr(warning)] text-red-500
+  @apply content-[attr(warning)] text-red-500;
 }
 
-.root:webkit-autofill{
-  @apply bg-primary
+.root:webkit-autofill {
+  @apply bg-primary;
 }

@@ -1,16 +1,16 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useState } from 'react'
 
-import Head from '../Head';
-import Navbar from '../Navbar';
-import Drawer from '../Drawer';
-import ClickAwayListener from '../ClickAwayListener';
-import Footer from '../Footer';
+import Head from '../Head'
+import Navbar from '../Navbar'
+import Drawer from '../Drawer'
+import ClickAwayListener from '../ClickAwayListener'
+import Footer from '../Footer'
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
-const pageItems = ['Home', 'Blog', 'Projects', 'Request'];
+const pageItems = ['Home', 'Blog', 'Projects', 'Request']
 
 /**
  * Layout that provides the meta information as well as the navigation element
@@ -19,12 +19,12 @@ const pageItems = ['Home', 'Blog', 'Projects', 'Request'];
  * @returns  {ReactElement} - Returns the layout element
  */
 const Layout = (props: LayoutProps): ReactElement => {
-  const { children } = props;
-  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+  const { children } = props
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false)
 
   const handleClick = () => {
-    setDrawerIsOpen(!drawerIsOpen);
-  };
+    setDrawerIsOpen(!drawerIsOpen)
+  }
 
   return (
     <div className="bg-primary">
@@ -40,13 +40,11 @@ const Layout = (props: LayoutProps): ReactElement => {
         </div>
       </ClickAwayListener>
       <div className="w-full min-h-screen h-full flex justify-center py-3">
-        <div className="max-w-4xl h-auto px-3">
-          { children }
-        </div>
+        <div className="max-w-4xl h-auto px-3">{children}</div>
       </div>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

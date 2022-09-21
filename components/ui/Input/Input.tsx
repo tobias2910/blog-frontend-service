@@ -1,17 +1,17 @@
-import React, { FC, HTMLInputTypeAttribute, InputHTMLAttributes } from 'react';
-import cn from 'clsx';
+import React, { FC, HTMLInputTypeAttribute, InputHTMLAttributes } from 'react'
+import cn from 'clsx'
 
-import s from './Input.module.css';
+import s from './Input.module.css'
 
 interface InputProps extends Partial<InputHTMLAttributes<HTMLInputElement>> {
-  label: string;
-  value: string;
-  errorMsg: string;
-  showErrorMsg: boolean;
-  handleOnChange: (e?: any) => void;
-  handleOnFocus: (e?: any) => void;
-  id: string;
-  type?: HTMLInputTypeAttribute;
+  label: string
+  value: string
+  errorMsg: string
+  showErrorMsg: boolean
+  handleOnChange: (e?: any) => void
+  handleOnFocus: (e?: any) => void
+  id: string
+  type?: HTMLInputTypeAttribute
 }
 
 /**
@@ -30,12 +30,12 @@ const Input: FC<InputProps> = (props) => {
     handleOnFocus,
     id,
     ...rest
-  } = props;
-  const className = cn(s.root, s.before);
+  } = props
+  const className = cn(s.root, s.before)
   return (
     <div className="mb-3">
       <label className="block mb-1" htmlFor={id}>
-        { label }
+        {label}
       </label>
       <input
         type={type}
@@ -53,18 +53,23 @@ const Input: FC<InputProps> = (props) => {
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />
-      <p className={`text-xs text-secondary-2 font-semibold ${showErrorMsg ? 'visible' : 'invisible'}`}>{errorMsg}</p>
+      <p
+        className={`text-xs text-secondary-2 font-semibold ${
+          showErrorMsg ? 'visible' : 'invisible'
+        }`}
+      >
+        {errorMsg}
+      </p>
     </div>
-  );
-};
+  )
+}
 
 Input.defaultProps = {
   type: '',
-};
+}
 
-const propsAreEqual = ((prevProps: InputProps, nextProps: InputProps) => (
-  prevProps.value === nextProps.value
-    && prevProps.showErrorMsg === nextProps.showErrorMsg
-));
+const propsAreEqual = (prevProps: InputProps, nextProps: InputProps) =>
+  prevProps.value === nextProps.value &&
+  prevProps.showErrorMsg === nextProps.showErrorMsg
 
-export default React.memo(Input, propsAreEqual);
+export default React.memo(Input, propsAreEqual)

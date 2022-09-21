@@ -1,10 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import Mailjet from 'node-mailjet';
+import { NextApiRequest, NextApiResponse } from 'next'
+import Mailjet from 'node-mailjet'
 
 const mailjet = new Mailjet({
   apiKey: process.env.MAILJET_API_KEY,
   apiSecret: process.env.MAILJET_SECRET_KEY,
-});
+})
 
 /**
  *
@@ -30,17 +30,17 @@ const sendMail = async (req: NextApiRequest, res: NextApiResponse) => {
           TextPart: req.body.description,
         },
       ],
-    };
+    }
 
     try {
-      await mailjet.post('send', { version: 'v3.1' }).request(mailOptions);
-      res.status(200).json({ sendSuccessful: true });
+      await mailjet.post('send', { version: 'v3.1' }).request(mailOptions)
+      res.status(200).json({ sendSuccessful: true })
     } catch (error) {
-      res.status(400).json({ sendSuccessful: false });
+      res.status(400).json({ sendSuccessful: false })
     }
   } else {
-    res.status(405).json({ error: 'Method not supported' });
+    res.status(405).json({ error: 'Method not supported' })
   }
-};
+}
 
-export default sendMail;
+export default sendMail

@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
-import Head from 'next/head';
-import React, { FC, Fragment, ReactNode } from 'react';
-import config from '../../../config/seo_meta.json';
+import Head from 'next/head'
+import React, { FC, Fragment, ReactNode } from 'react'
+import config from '../../../config/seo_meta.json'
 
 interface OgImage {
   url?: string
@@ -26,11 +26,9 @@ interface SEOProps {
   children?: ReactNode
 }
 
-const ogImage = ({
-  width, height, alt,
-}: OgImage, index: number) => {
+const ogImage = ({ width, height, alt }: OgImage, index: number) => {
   // generate full URL for OG image url with store base URL
-  const imgUrl = config.openGraph.url;
+  const imgUrl = config.openGraph.url
   return (
     <Fragment key={`og:image:${index}`}>
       <meta
@@ -54,8 +52,8 @@ const ogImage = ({
         content={alt}
       />
     </Fragment>
-  );
-};
+  )
+}
 
 // eslint-disable-next-line react/function-component-definition
 const SEO: FC<SEOProps> = ({
@@ -83,18 +81,18 @@ const SEO: FC<SEOProps> = ({
       key="og:title"
       property="og:title"
       content={
-            openGraph?.title ?? config.openGraph.title ?? title ?? config.title
-          }
+        openGraph?.title ?? config.openGraph.title ?? title ?? config.title
+      }
     />
     <meta
       key="og:description"
       property="og:description"
       content={
-            openGraph?.description
-            ?? config.openGraph.description
-            ?? description
-            ?? config.description
-          }
+        openGraph?.description ??
+        config.openGraph.description ??
+        description ??
+        config.description
+      }
     />
     <meta
       key="og:site_name"
@@ -127,13 +125,9 @@ const SEO: FC<SEOProps> = ({
       />
     )}
     <meta key="robots" name="robots" content={robots ?? 'index,follow'} />
-    <meta
-      key="googlebot"
-      name="googlebot"
-      content={robots ?? 'index,follow'}
-    />
+    <meta key="googlebot" name="googlebot" content={robots ?? 'index,follow'} />
     {children}
   </Head>
-);
+)
 
-export default SEO;
+export default SEO

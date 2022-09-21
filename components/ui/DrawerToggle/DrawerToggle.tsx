@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
-import { motion } from 'framer-motion';
-import Button from '../Button';
-import Path from '../Path';
+import React, { FC } from 'react'
+import { motion } from 'framer-motion'
+import Button from '../Button'
+import Path from '../Path'
 
 interface DrawerToggleProps {
-  isOpen: boolean;
-  handleClick: () => void;
+  isOpen: boolean
+  handleClick: () => void
 }
 
 /**
@@ -15,7 +15,11 @@ interface DrawerToggleProps {
  */
 const DrawerToggle: FC<DrawerToggleProps> = ({ handleClick, isOpen }) => (
   <Button handleOnClick={handleClick} size="small">
-    <motion.div animate={isOpen ? 'open' : 'closed'} whileHover={{ scale: 1.20 }} whileTap={{ scale: 0.80 }}>
+    <motion.div
+      animate={isOpen ? 'open' : 'closed'}
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.8 }}
+    >
       <svg viewBox="0 -2 20 23" className="stroke-secondary w-5 h-5">
         <Path
           variants={{
@@ -40,6 +44,6 @@ const DrawerToggle: FC<DrawerToggleProps> = ({ handleClick, isOpen }) => (
       </svg>
     </motion.div>
   </Button>
-);
+)
 
-export default DrawerToggle;
+export default DrawerToggle

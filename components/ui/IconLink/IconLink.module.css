@@ -1,11 +1,11 @@
 .root {
-    @apply rounded flex mx-2 my-1 border border-transparent items-center outline-none
+  @apply rounded flex mx-2 my-1 border border-transparent items-center outline-none;
 }
 
 .root:hover {
-    @apply text-teal-400
+  @apply text-teal-400;
 }
 
 .root:focus {
-    @apply border-secondary
+  @apply border-secondary;
 }

@@ -1,51 +1,51 @@
 .root {
-    @apply relative no-underline font-bold cursor-pointer ml-4 mr-4;
+  @apply relative no-underline font-bold cursor-pointer ml-4 mr-4;
 }
 
 .root:focus {
-    @apply outline-none scale-x-100
+  @apply outline-none scale-x-100;
 }
 
 .big {
-    @apply text-3xl
+  @apply text-3xl;
 }
 
 .small {
-    @apply text-2xl    
+  @apply text-2xl;
 }
 
 .leftUnderline {
-    @apply relative
+  @apply relative;
 }
 
 .leftUnderline::before {
-    @apply content-[''] absolute w-0 h-0.5 bottom-0 left-0 rounded bg-secondary transform transition-all duration-300 ease-in-out
+  @apply content-[''] absolute w-0 h-0.5 bottom-0 left-0 rounded bg-secondary transform transition-all duration-300 ease-in-out;
 }
 
 .leftUnderline:hover::before {
-    @apply visible w-full
+  @apply visible w-full;
 }
 
 .leftUnderline:focus::before {
-    @apply visible w-full
+  @apply visible w-full;
 }
 
 .leftUnderline.selected::before {
-    @apply visible w-full bg-secondary-2
+  @apply visible w-full bg-secondary-2;
 }
 
 .middleUnderline::before {
-    @apply content-[''] absolute block w-full rounded h-0.5 bottom-0 bg-secondary transform duration-300 ease-in-out scale-x-0
+  @apply content-[''] absolute block w-full rounded h-0.5 bottom-0 bg-secondary transform duration-300 ease-in-out scale-x-0;
 }
 
 .middleUnderline:focus::before {
-    @apply scale-x-100
+  @apply scale-x-100;
 }
 
 .middleUnderline:hover::before {
-    @apply scale-x-100
+  @apply scale-x-100;
 }
 
 .middleUnderline.selected::before {
-    @apply scale-x-100 bg-secondary-2
+  @apply scale-x-100 bg-secondary-2;
 }

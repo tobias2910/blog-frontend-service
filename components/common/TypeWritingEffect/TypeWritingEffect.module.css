@@ -1,7 +1,7 @@
 .root::after {
-    @apply content-[''] border h-1 border-secondary
+  @apply content-[''] border h-1 border-secondary;
 }
 
-.root.pausing::after{
-    @apply animate-typingIndicator
+.root.pausing::after {
+  @apply animate-typingIndicator;
 }

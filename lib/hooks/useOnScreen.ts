@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react'
 /**
  * This hook checks whether the specified element is visible within the
  * current viewport. It is not checked, whether the whole element is visible,
@@ -10,22 +10,23 @@ import { RefObject, useEffect, useState } from 'react';
  * @returns {boolean} - Flag that indicates, whether the element
  *                      is on the screen
  */
-const useOnScreen = <T extends HTMLElement>(ref: RefObject<T>, fireOnes?: boolean): boolean => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
+const useOnScreen = <T extends HTMLElement>(
+  ref: RefObject<T>,
+  fireOnes?: boolean
+): boolean => {
+  const [isIntersecting, setIsIntersecting] = useState(false)
 
-  useEffect(
-    () => {
-      const observer = new IntersectionObserver(([entry]) => {
-        setIsIntersecting(entry.isIntersecting);
-      });
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting)
+    })
 
-      if (ref.current) observer.observe(ref.current);
-      if (isIntersecting && fireOnes) observer.disconnect();
-      return () => observer.disconnect();
-    },
-  );
+    if (ref.current) observer.observe(ref.current)
+    if (isIntersecting && fireOnes) observer.disconnect()
+    return () => observer.disconnect()
+  })
 
-  return isIntersecting;
-};
+  return isIntersecting
+}
 
-export default useOnScreen;
+export default useOnScreen

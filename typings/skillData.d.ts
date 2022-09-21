@@ -1,14 +1,14 @@
 export interface SkillData {
-  languages: Skill[];
-  frameworks: Skill[];
-  technologies: Skill[];
-  methodologies: Skill[];
+  languages: Skill[]
+  frameworks: Skill[]
+  technologies: Skill[]
+  methodologies: Skill[]
 }
 
 export interface Skill {
-  id: number;
-  value: string;
-  experience: ExperienceLevel;
+  id: number
+  value: string
+  experience: ExperienceLevel
 }
 
-type ExperienceLevel = 'high' | 'normal';
+type ExperienceLevel = 'high' | 'normal'

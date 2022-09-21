@@ -1,23 +1,23 @@
 .root {
-    @apply rounded border border-secondary flex justify-center items-center duration-500 outline-none 
+  @apply rounded border border-secondary flex justify-center items-center duration-500 outline-none;
 }
 
 .root:focus {
-    @apply border-secondary shadow shadow-secondary
+  @apply border-secondary shadow shadow-secondary;
 }
 
 .small {
-    @apply w-10 h-10
+  @apply w-10 h-10;
 }
 
 .medium {
-    @apply w-20 h-10
+  @apply w-20 h-10;
 }
 
 .large {
-    @apply border-2 w-32 md:w-48 h-12
+  @apply border-2 w-32 md:w-48 h-12;
 }
 
 .large:hover {
-    @apply border-secondary-2 shadow-secondary-2
+  @apply border-secondary-2 shadow-secondary-2;
 }
