@@ -34,3 +34,5 @@ describe('drawer menu on mobile devices', () => {
     cy.get('.stroke-secondary').click()
   })
 })
+
+export {}

@@ -28,3 +28,5 @@ describe('Navigation bar on big screens', () => {
       })
   })
 })
+
+export {}

@@ -46,3 +46,5 @@ describe('request form', () => {
     cy.get('.rounded-full > .w-5').click()
   })
 })
+
+export {}
