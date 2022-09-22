@@ -1,4 +1,4 @@
-name: Test
+name: Testing
 
 on:
   pull_request:
@@ -46,3 +46,29 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+  unit_testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
+          run_install: false
+      
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run the Unit tests
+        run: pnpm run test:ci
+
+      - name: Upload the coverage report
+        uses: codecov/codecov-action@v3

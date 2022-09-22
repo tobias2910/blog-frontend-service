@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState, ReactElement } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { MoonIcon, SunIcon } from '@heroicons/react/solid'
-import Button from '../Button'
+import Button from '@components/ui/Button'
 
 /**
  * Provides a styled button that can be used to switch
