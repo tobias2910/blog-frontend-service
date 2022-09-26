@@ -1,38 +1,38 @@
-import React, { FC, useEffect, useMemo, useState, useRef } from 'react'
+import React, { FC, useEffect, useMemo, useState, useRef } from 'react';
 
-import useHover from '../../lib/hooks/useHover'
-import useOnScreen from '../../lib/hooks/useOnScreen'
-import { Skill, SkillData } from '../../typings/skillData'
+import useHover from '../../utils/hooks/useHover';
+import useOnScreen from '../../utils/hooks/useOnScreen';
+import { Skill, SkillData } from '../../typings/skillData';
 
 interface SkillOverviewProps {
-  skillData: SkillData
+  skillData: SkillData;
 }
 
 const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
-  const skillTableRef = useRef<HTMLDivElement>(null)
-  const isOnScreen = useOnScreen(skillTableRef)
-  const isHovered = useHover(skillTableRef)
-  const [selectedItem, setSelectedItem] = useState(0)
+  const skillTableRef = useRef<HTMLDivElement>(null);
+  const isOnScreen = useOnScreen(skillTableRef);
+  const isHovered = useHover(skillTableRef);
+  const [selectedItem, setSelectedItem] = useState(0);
 
   const listRefs = useMemo(() => {
     const arrLength = Object.values(skillData).reduce(
       (prev, cur) => prev + cur.length,
       0
-    )
-    return Array(arrLength).fill(0)
-  }, [skillData])
+    );
+    return Array(arrLength).fill(0);
+  }, [skillData]);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout
+    let timer: NodeJS.Timeout;
     if (isOnScreen && !isHovered) {
       timer = setTimeout(() => {
-        const idx = Math.floor(Math.random() * listRefs.length)
-        listRefs[idx].focus({ preventScroll: true })
-        setSelectedItem(new Date().getTime())
-      }, 700)
+        const idx = Math.floor(Math.random() * listRefs.length);
+        listRefs[idx].focus({ preventScroll: true });
+        setSelectedItem(new Date().getTime());
+      }, 700);
     }
-    return () => clearTimeout(timer)
-  }, [listRefs, selectedItem, isOnScreen, isHovered])
+    return () => clearTimeout(timer);
+  }, [listRefs, selectedItem, isOnScreen, isHovered]);
 
   return (
     <div
@@ -53,7 +53,7 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
                 key={el.id}
                 tabIndex={-1}
                 ref={(skill: HTMLLIElement) => {
-                  listRefs[listRefs.findIndex((item) => item === 0)] = skill
+                  listRefs[listRefs.findIndex((item) => item === 0)] = skill;
                 }}
                 className={`rounded hover:text-secondary focus:text-secondary
                   ${
@@ -75,7 +75,7 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default SkillOverviewMobile
+export default SkillOverviewMobile;

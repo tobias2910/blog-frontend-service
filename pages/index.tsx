@@ -1,14 +1,14 @@
-import React from 'react'
-import type { NextPage } from 'next'
+import React from 'react';
+import type { NextPage } from 'next';
 
-import TypeWritingEffect from '../components/common/TypeWritingEffect'
-import Introduction from '../components/Introduction'
-import ArrowDown from '../components/common/ArrowDown'
-import { SkillData } from '../typings/skillData'
-import SkillOverviewMobile from '../components/SkillOverviewMobile'
-import SkillOverviewDesktop from '../components/SkillOverviewDesktop'
-import StyledParagraph from '../components/ui/StyledParagraph'
-import useMediaQuery from '../lib/hooks/useMediaQuery'
+import TypeWritingEffect from '../components/common/TypeWritingEffect';
+import Introduction from '../components/Introduction';
+import ArrowDown from '../components/common/ArrowDown';
+import { SkillData } from '../typings/skillData';
+import SkillOverviewMobile from '../components/SkillOverviewMobile';
+import SkillOverviewDesktop from '../components/SkillOverviewDesktop';
+import StyledParagraph from '../components/ui/StyledParagraph';
+import useMediaQuery from '../utils/hooks/useMediaQuery';
 
 // This is mockup data for the time being, the API is not implemented
 const mockupSkills: SkillData = {
@@ -43,11 +43,11 @@ const mockupSkills: SkillData = {
     { id: 926, value: 'DevOps', experience: 'normal' },
     { id: 927, value: 'Scrum', experience: 'normal' },
   ],
-}
+};
 
 // eslint-disable-next-line react/function-component-definition
 const Home: NextPage = () => {
-  const isSmallMediaQuery = useMediaQuery('sm')
+  const isSmallMediaQuery = useMediaQuery('sm');
 
   return (
     <article className="z-0">
@@ -111,7 +111,7 @@ const Home: NextPage = () => {
         </div>
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

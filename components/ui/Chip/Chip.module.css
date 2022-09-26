@@ -1,0 +1,40 @@
+.root {
+  @apply flex items-center justify-center w-24 border-2 border-secondary rounded-full transition duration-300;
+}
+
+.root:hover {
+  @apply border-secondary;
+}
+
+.root:focus,
+.active.focus {
+  @apply outline-none;
+}
+
+.root > :first-child {
+  @apply mr-2 transition duration-300;
+}
+
+.smallIcon {
+  @apply w-3 h-3;
+}
+
+.mediumIcon {
+  @apply w-4 h-4;
+}
+
+.largeIcon {
+  @apply w-5 h-5;
+}
+
+.active {
+  @apply border-secondary-2 transition duration-300;
+}
+
+.active > :first-child {
+  @apply fill-secondary-2 transition duration-300;
+}
+
+.active:hover {
+  @apply border-secondary-2;
+}
