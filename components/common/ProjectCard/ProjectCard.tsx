@@ -52,7 +52,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         </a>
         <div className="bottom-0 absolute w-full">
           <hr className="border-[0.4px] rounded w-full border-secondary-2 mb-1" />
-          <div className="flex flex-wrap mb-1 justify-around w-full last:justify-evenly">
+          <div className="flex flex-wrap mb-1 justify-around w-full">
             {tags.slice(0, 3).map((tag) => (
               <Chip
                 key={tag.text}
