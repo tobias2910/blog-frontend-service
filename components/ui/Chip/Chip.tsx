@@ -28,7 +28,8 @@ const Chip: FC<ChipProps> = ({ text, Icon, type, iconSize }) => {
   };
 
   const containerClassName = cn(s.root, {
-    [s.active]: isActive,
+    [s.inactive]: isActive,
+    [s.standard]: type === 'standard',
   });
 
   const iconClassName = cn({
@@ -45,7 +46,7 @@ const Chip: FC<ChipProps> = ({ text, Icon, type, iconSize }) => {
       tabIndex={0}
     >
       <Icon className={iconClassName} />
-      {text}
+      <span className="text-center m-auto">{text}</span>
     </div>
   );
 };
