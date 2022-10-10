@@ -1,61 +1,61 @@
-import React, { FC, useEffect, useMemo, useState, useRef } from 'react'
-import { CSSTransition, SwitchTransition } from 'react-transition-group'
-import s from './SkillOverviewMobile.module.css'
+import React, { FC, useEffect, useMemo, useState, useRef } from 'react';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import s from './SkillOverviewMobile.module.css';
 
-import useOnScreen from '../../lib/hooks/useOnScreen'
-import { Skill, SkillData } from '../../typings/skillData'
+import useOnScreen from '../../utils/hooks/useOnScreen';
+import { Skill, GroupedSkills } from '../../typings/skill';
 
 interface SkillOverviewProps {
-  skillData: SkillData
+  skillData: GroupedSkills;
 }
 
 const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
-  const skillTableRef = useRef<HTMLDivElement>(null)
-  const isOnScreen = useOnScreen(skillTableRef)
-  const [currentItem, setCurrentItem] = useState(0)
+  const skillTableRef = useRef<HTMLDivElement>(null);
+  const isOnScreen = useOnScreen(skillTableRef);
+  const [currentItem, setCurrentItem] = useState(0);
 
   const itemArray = useMemo(() => {
-    const arr: { value: string; experience: string }[] = []
+    const arr: { value: string; experience: number }[] = [];
     Object.values(skillData).forEach((value) => {
       value.forEach((el: Skill) => {
         arr.push({
-          value: el.value,
+          value: el.name,
           experience: el.experience,
-        })
-      })
-    })
+        });
+      });
+    });
 
-    return arr
-  }, [skillData])
+    return arr;
+  }, [skillData]);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout
+    let timer: NodeJS.Timeout;
 
     if (isOnScreen) {
       timer = setTimeout(() => {
         setCurrentItem((prevItem) =>
           prevItem === itemArray.length - 1 ? 0 : prevItem + 1
-        )
-      }, 1500)
+        );
+      }, 1500);
     }
 
-    return () => clearTimeout(timer)
-  }, [isOnScreen, currentItem, itemArray])
+    return () => clearTimeout(timer);
+  }, [isOnScreen, currentItem, itemArray]);
 
-  const nodeRef = useRef<any>(null)
+  const nodeRef = useRef<any>(null);
 
   const currentCategory = useMemo(() => {
     const category = Object.entries(skillData).find(
       (entry: [string, Skill[]]) =>
-        entry[1].some((skill) => skill.value === itemArray[currentItem].value)
-    )![0]
+        entry[1].some((skill) => skill.name === itemArray[currentItem].value)
+    )![0];
 
     return (
       <span className="rounded outline-none duration-500 px-4 py-2 text-center w-1/2">
         {`${category.charAt(0).toUpperCase()}${category.slice(1)}:`}
       </span>
-    )
-  }, [skillData, itemArray, currentItem])
+    );
+  }, [skillData, itemArray, currentItem]);
 
   const currentSkill = useMemo(
     () => (
@@ -74,12 +74,8 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
           <span
             ref={nodeRef}
             className={`rounded text-secondary text-center
-        ${
-          itemArray[currentItem].experience === 'normal' ? 'bg-secondary' : null
-        }
-        ${
-          itemArray[currentItem].experience === 'high' ? 'bg-secondary-2' : null
-        }
+        ${itemArray[currentItem].experience === 1 ? 'bg-secondary' : null}
+        ${itemArray[currentItem].experience === 2 ? 'bg-secondary-2' : null}
         outline-none duration-500 text-left m-auto px-4 py-2`}
           >
             {itemArray[currentItem].value}
@@ -88,7 +84,7 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
       </SwitchTransition>
     ),
     [itemArray, currentItem]
-  )
+  );
 
   return (
     <div
@@ -98,7 +94,7 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
       {currentCategory}
       {currentSkill}
     </div>
-  )
-}
+  );
+};
 
-export default SkillOverviewMobile
+export default SkillOverviewMobile;

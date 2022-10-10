@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from 'react'
+import { useEffect, useState, useReducer } from 'react';
 
 /* ************************************************* */
 /* ******** Reducer function for typing ************ */
@@ -10,20 +10,20 @@ enum TypingActions {
 }
 
 interface TypingAction {
-  type: TypingActions
-  payload: string
+  type: TypingActions;
+  payload: string;
 }
 
 const typingReducer = (typingState: string, action: TypingAction) => {
   switch (action.type) {
     case TypingActions.TYPE: {
-      return action.payload.slice(0, typingState.length + 1)
+      return action.payload.slice(0, typingState.length + 1);
     }
     default: {
-      return action.payload.slice(0, typingState.length - 1)
+      return action.payload.slice(0, typingState.length - 1);
     }
   }
-}
+};
 
 /* ************************************************* */
 /* ******* Custom hook for the typing effect ******* */
@@ -37,9 +37,9 @@ export enum EventStatus {
 }
 
 interface TypeWriteResult {
-  typedWord: string
-  eventStatus: string
-  currentWord: string
+  typedWord: string;
+  eventStatus: string;
+  currentWord: string;
 }
 
 /**
@@ -59,9 +59,9 @@ const useTypeWritingEffect = (
   pausingDuration: number,
   infinite: boolean = true
 ): TypeWriteResult => {
-  const [typedWord, dispatch] = useReducer(typingReducer, '')
-  const [eventStatus, setEventStatus] = useState(EventStatus.Typing)
-  const [wordListIndex, setWordListIndex] = useState(0)
+  const [typedWord, dispatch] = useReducer(typingReducer, '');
+  const [eventStatus, setEventStatus] = useState(EventStatus.Typing);
+  const [wordListIndex, setWordListIndex] = useState(0);
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
@@ -71,48 +71,50 @@ const useTypeWritingEffect = (
           dispatch({
             type: TypingActions.TYPE,
             payload: wordList[wordListIndex],
-          })
-        }, typingInterval)
+          });
+        }, typingInterval);
 
         if (typedWord === wordList[wordListIndex])
-          setEventStatus(EventStatus.Pausing)
+          setEventStatus(EventStatus.Pausing);
 
-        return () => clearTimeout(typingTimeout)
+        return () => clearTimeout(typingTimeout);
       }
       case EventStatus.Deleting: {
         const deletingTimeout = setTimeout(() => {
-          dispatch({ type: TypingActions.DELETE, payload: typedWord })
-        }, deletingInterval)
+          dispatch({ type: TypingActions.DELETE, payload: typedWord });
+        }, deletingInterval);
 
         if (typedWord.length === 0) {
-          setEventStatus(EventStatus.Typing)
-          setWordListIndex((idx) => (idx === wordList.length - 1 ? 0 : idx + 1))
+          setEventStatus(EventStatus.Typing);
+          setWordListIndex((idx) =>
+            idx === wordList.length - 1 ? 0 : idx + 1
+          );
         }
 
-        return () => clearTimeout(deletingTimeout)
+        return () => clearTimeout(deletingTimeout);
       }
       case EventStatus.Stopped: {
-        break
+        break;
       }
       default: {
         const pauseTimeout = setTimeout(() => {
-          setEventStatus(EventStatus.Deleting)
-        }, pausingDuration)
+          setEventStatus(EventStatus.Deleting);
+        }, pausingDuration);
 
         if (wordListIndex === wordList.length - 1 && !infinite)
-          setEventStatus(EventStatus.Stopped)
+          setEventStatus(EventStatus.Stopped);
 
-        return () => clearTimeout(pauseTimeout)
+        return () => clearTimeout(pauseTimeout);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [eventStatus, wordList, typedWord])
+  }, [eventStatus, wordList, typedWord]);
 
   return {
     typedWord,
     eventStatus,
     currentWord: wordList[wordListIndex],
-  }
-}
+  };
+};
 
-export default useTypeWritingEffect
+export default useTypeWritingEffect;

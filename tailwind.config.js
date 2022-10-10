@@ -10,6 +10,7 @@ module.exports = {
         'primary-2': 'var(--primary-2)',
         secondary: 'var(--secondary)',
         'secondary-2': 'var(--secondary-2)',
+        'secondary-3': 'var(--secondary-3)',
         hover: 'var(--hover)',
       },
       textColor: {
@@ -66,4 +67,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

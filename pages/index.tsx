@@ -1,53 +1,69 @@
-import React from 'react'
-import type { NextPage } from 'next'
+import React from 'react';
+import { InferGetStaticPropsType } from 'next';
 
-import TypeWritingEffect from '../components/common/TypeWritingEffect'
-import Introduction from '../components/Introduction'
-import ArrowDown from '../components/common/ArrowDown'
-import { SkillData } from '../typings/skillData'
-import SkillOverviewMobile from '../components/SkillOverviewMobile'
-import SkillOverviewDesktop from '../components/SkillOverviewDesktop'
-import StyledParagraph from '../components/ui/StyledParagraph'
-import useMediaQuery from '../lib/hooks/useMediaQuery'
+import TypeWritingEffect from '@components/common/TypeWritingEffect';
+import Introduction from '@components/Introduction';
+import ArrowDown from '@components/common/ArrowDown';
+import SkillOverviewMobile from '@components/SkillOverviewMobile';
+import SkillOverviewDesktop from '@components/SkillOverviewDesktop';
+import StyledParagraph from '@components/ui/StyledParagraph';
+import groupArray from 'utils/groupArray';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 
-// This is mockup data for the time being, the API is not implemented
-const mockupSkills: SkillData = {
-  languages: [
-    { id: 123, value: 'CSS', experience: 'high' },
-    { id: 234, value: 'HTML', experience: 'high' },
-    { id: 345, value: 'Python', experience: 'normal' },
-    { id: 456, value: 'TypeScript', experience: 'high' },
-  ],
-  frameworks: [
-    { id: 567, value: 'Express.js', experience: 'high' },
-    { id: 568, value: 'Flask', experience: 'normal' },
-    { id: 569, value: 'Flair NLP', experience: 'normal' },
-    { id: 789, value: 'Bot Framework', experience: 'high' },
-    { id: 912, value: 'Next.js', experience: 'high' },
-    { id: 913, value: 'OpenAPI', experience: 'high' },
-    { id: 914, value: 'React.js', experience: 'high' },
-  ],
-  technologies: [
-    { id: 915, value: 'Cloud', experience: 'high' },
-    { id: 916, value: 'Docker', experience: 'high' },
-    { id: 918, value: 'MongoDB', experience: 'high' },
-    { id: 919, value: 'Nginx', experience: 'high' },
-    { id: 920, value: 'NodeJS', experience: 'high' },
-    { id: 922, value: 'RabbitMQ', experience: 'high' },
-    { id: 921, value: 'SQL', experience: 'high' },
-    { id: 923, value: 'REST APIs', experience: 'high' },
-    { id: 924, value: 'Redis', experience: 'normal' },
-  ],
-  methodologies: [
-    { id: 925, value: 'BPMN', experience: 'high' },
-    { id: 926, value: 'DevOps', experience: 'normal' },
-    { id: 927, value: 'Scrum', experience: 'normal' },
-  ],
-}
+import { GroupedSkills, Skill } from '../typings/skill';
+import { Token } from '../typings/token';
 
-// eslint-disable-next-line react/function-component-definition
-const Home: NextPage = () => {
-  const isSmallMediaQuery = useMediaQuery('sm')
+export const getStaticProps = async () => {
+  const authRes = await fetch(
+    `${process.env.BLOG_RESTAPI_URL}/api/v1/auth/login`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: process.env.API_USERNAME,
+        password: process.env.API_PASSWORD,
+      }),
+    }
+  );
+  const token: Token = await authRes.json();
+
+  if (!authRes.ok) {
+    throw new Error(
+      `Failed to fetch auth token. Error code ${authRes.statusText}`
+    );
+  }
+
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token.access_token.token}`,
+  });
+
+  const skillRes = await fetch(
+    `${process.env.BLOG_RESTAPI_URL}/api/v1/skills/`,
+    { headers }
+  );
+
+  if (!skillRes.ok) {
+    throw new Error(
+      `Failed to fetch new skills. Error code ${skillRes.statusText}`
+    );
+  }
+
+  const skills: Skill[] = await skillRes.json();
+  const skillsGrouped: GroupedSkills = groupArray(skills, 'category');
+
+  return {
+    props: {
+      skills: skillsGrouped,
+    },
+    revalidate: 6000,
+  };
+};
+
+const Home = ({ skills }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const isSmallMediaQuery = useMediaQuery('sm');
 
   return (
     <article className="z-0">
@@ -94,9 +110,9 @@ const Home: NextPage = () => {
             </StyledParagraph>
           </div>
           {!isSmallMediaQuery ? (
-            <SkillOverviewDesktop skillData={mockupSkills} />
+            <SkillOverviewDesktop skillData={skills} />
           ) : (
-            <SkillOverviewMobile skillData={mockupSkills} />
+            <SkillOverviewMobile skillData={skills} />
           )}
           <div className="flex justify-center items-center -mt-5">
             <svg className=" w-4 h-4 rounded bg-secondary mr-2">
@@ -111,7 +127,7 @@ const Home: NextPage = () => {
         </div>
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

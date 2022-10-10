@@ -1,13 +1,13 @@
-import React, { FC, ReactNode, useRef } from 'react'
-import cn from 'clsx'
+import React, { FC, ReactNode, useRef } from 'react';
+import cn from 'clsx';
 
-import useOnScreen from '../../../lib/hooks/useOnScreen'
-import s from './StyledParagraph.module.css'
+import useOnScreen from '../../../utils/hooks/useOnScreen';
+import s from './StyledParagraph.module.css';
 
 interface StyledParagraphProps {
-  children: ReactNode
-  fireOnes?: boolean
-  className?: string
+  children: ReactNode;
+  fireOnes?: boolean;
+  className?: string;
 }
 
 // const showFullOpacity = (scrollProgress: number, top: number, height: number) => (
@@ -24,8 +24,8 @@ const StyledParagraph: FC<StyledParagraphProps> = ({
   fireOnes,
   className,
 }) => {
-  const paragraphRef = useRef<HTMLParagraphElement>(null)
-  const isOnScreen = useOnScreen(paragraphRef, fireOnes)
+  const paragraphRef = useRef<HTMLParagraphElement>(null);
+  const isOnScreen = useOnScreen(paragraphRef, fireOnes);
 
   // if (paragraphRef.current) {
   //   const { offsetTop, clientHeight } = paragraphRef.current;
@@ -40,18 +40,18 @@ const StyledParagraph: FC<StyledParagraphProps> = ({
     s.root,
     { [s.showParagraph]: isOnScreen },
     className
-  )
+  );
 
   return (
     <p ref={paragraphRef} className={innerClassName}>
       {children}
     </p>
-  )
-}
+  );
+};
 
 StyledParagraph.defaultProps = {
   fireOnes: true,
   className: '',
-}
+};
 
-export default StyledParagraph
+export default StyledParagraph;

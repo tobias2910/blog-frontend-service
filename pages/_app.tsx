@@ -1,11 +1,11 @@
-import '../assets/main.css'
+import '../assets/main.css';
 
-import React from 'react'
-import { ThemeProvider } from 'next-themes'
-import type { AppProps } from 'next/app'
+import React from 'react';
+import { ThemeProvider } from 'next-themes';
+import type { AppProps } from 'next/app';
 
-import Layout from '../components/common/Layout'
-import ScrollProvider from '../lib/context/ScrollProvider'
+import Layout from '../components/common/Layout';
+import ScrollProvider from '../utils/context/ScrollProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Layout>
       </ThemeProvider>
     </ScrollProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
