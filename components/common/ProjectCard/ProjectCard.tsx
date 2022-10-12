@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
 import Card from '@components/ui/Card';
 import Chip from '@components/ui/Chip';
-import CardTags from '../../../typings/cardTags';
+import { Tag } from '../../../typings/project';
 
 interface ProjectCardProps {
   title: string;
   imageUrl: string;
   description: string;
-  tags: CardTags[];
+  tags: Tag[];
   projectUrl: string;
 }
 
@@ -25,13 +26,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
   tags,
   projectUrl,
 }) => (
-  <div className="w-[14rem] md:w-80 h-80 md:h-[21rem]">
+  <div className="w-[20rem] md:w-96 h-96 md:h-96">
     <Card className="h-full w-full">
       <div className="flex flex-col items-center h-full relative">
-        <span className="text-base md:text-lg underline decoration-secondary font-semibold mb-3 hover:decoration-secondary-2 duration-300 h-5">
+        <span className="text-lg md:text-xl underline decoration-secondary-2 font-semibold mb-4 h-5">
           {title}
         </span>
-        <div className="h-32 md:h40 w-48 md:w-64 relative mb-2">
+        <div className="h-36 w-full relative mb-3">
           <Image
             src={imageUrl}
             className="rounded"
@@ -39,11 +40,11 @@ const ProjectCard: FC<ProjectCardProps> = ({
             layout="fill"
           />
         </div>
-        <span className="text-center text-xs md:text-sm leading-3 h-14 mb-2 ">
+        <span className="text-center text-xs md:text-base h-20 md:h-20 mb-1">
           {description}
         </span>
         <a
-          className="flex border-secondary rounded-sm justify-center items-center border md:border-2 text-xs w-24 h-6 md:w-32 md:h-8 text-center hover:border-secondary-2 transition-colors duration-500 ease-linear mb-1"
+          className="flex border-secondary rounded-sm justify-center items-center border font-semibold md:border text-xs md:text-sm w-28 h-7 md:w-32 md:h-8 text-center hover:border-secondary-2 transition-colors duration-500 ease-linear"
           href={projectUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -51,13 +52,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
           Show project
         </a>
         <div className="bottom-0 absolute w-full">
-          <hr className="border-[0.4px] rounded w-full border-secondary-2 mb-1" />
-          <div className="flex flex-wrap mb-1 justify-around w-full last:justify-evenly">
+          <hr className="border-1 rounded w-full border-secondary-2 my-2" />
+          <div className="flex flex-wrap mb-1 justify-around w-full">
             {tags.slice(0, 3).map((tag) => (
               <Chip
-                key={tag.text}
-                Icon={tag.icon}
-                text={tag.text}
+                key={tag.name}
+                // @ts-ignore
+                Icon={dynamic(() =>
+                  import('react-icons/si').then((mod) => mod[tag.icon_name])
+                )}
+                text={tag.name}
                 iconSize="medium"
                 type="standard"
               />

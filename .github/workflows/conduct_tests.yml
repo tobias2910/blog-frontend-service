@@ -36,6 +36,9 @@ jobs:
           REQUEST_RECEIVER_MAIL: ${{ secrets.REQUEST_RECEIVER_MAIL }}
           MAILJET_API_KEY: ${{ secrets.MAILJET_API_KEY }}
           MAILJET_SECRET_KEY: ${{ secrets.MAILJET_SECRET_KEY }}
+          BLOG_RESTAPI_URL: ${{ secrets.BLOG_RESTAPI_URL }}
+          API_USERNAME: ${{ secrets.API_USERNAME }}
+          API_PASSWORD: ${{ secrets.API_PASSWORD }}
 
       - name: Cache the build
         uses: actions/cache@v2

@@ -2,10 +2,10 @@ import React, { FC, useEffect, useMemo, useState, useRef } from 'react';
 
 import useHover from '../../utils/hooks/useHover';
 import useOnScreen from '../../utils/hooks/useOnScreen';
-import { Skill, SkillData } from '../../typings/skillData';
+import { Skill, GroupedSkills } from '../../typings/skill';
 
 interface SkillOverviewProps {
-  skillData: SkillData;
+  skillData: GroupedSkills;
 }
 
 const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
@@ -57,18 +57,18 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
                 }}
                 className={`rounded hover:text-secondary focus:text-secondary
                   ${
-                    el.experience === 'normal'
+                    el.experience === 1
                       ? 'hover:bg-secondary focus:bg-secondary'
                       : null
                   }
                   ${
-                    el.experience === 'high'
+                    el.experience === 2
                       ? 'hover:bg-secondary-2 focus:bg-secondary-2'
                       : null
                   }
                   outline-none duration-500 py-1`}
               >
-                {el.value}
+                {el.name}
               </li>
             ))}
           </ul>

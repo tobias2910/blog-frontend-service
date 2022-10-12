@@ -1,7 +1,5 @@
-import { IconType } from 'react-icons';
-
 export interface CardTags {
-  icon: IconType;
+  iconName: string;
   text: string;
 }
 

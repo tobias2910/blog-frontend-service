@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
+import { IconType } from 'react-icons';
 
 import cn from 'clsx';
-import { IconType } from 'react-icons';
 
 import s from './Chip.module.css';
 

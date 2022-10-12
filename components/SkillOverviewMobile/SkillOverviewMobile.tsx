@@ -3,10 +3,10 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import s from './SkillOverviewMobile.module.css';
 
 import useOnScreen from '../../utils/hooks/useOnScreen';
-import { Skill, SkillData } from '../../typings/skillData';
+import { Skill, GroupedSkills } from '../../typings/skill';
 
 interface SkillOverviewProps {
-  skillData: SkillData;
+  skillData: GroupedSkills;
 }
 
 const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
@@ -15,11 +15,11 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
   const [currentItem, setCurrentItem] = useState(0);
 
   const itemArray = useMemo(() => {
-    const arr: { value: string; experience: string }[] = [];
+    const arr: { value: string; experience: number }[] = [];
     Object.values(skillData).forEach((value) => {
       value.forEach((el: Skill) => {
         arr.push({
-          value: el.value,
+          value: el.name,
           experience: el.experience,
         });
       });
@@ -47,7 +47,7 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
   const currentCategory = useMemo(() => {
     const category = Object.entries(skillData).find(
       (entry: [string, Skill[]]) =>
-        entry[1].some((skill) => skill.value === itemArray[currentItem].value)
+        entry[1].some((skill) => skill.name === itemArray[currentItem].value)
     )![0];
 
     return (
@@ -74,12 +74,8 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
           <span
             ref={nodeRef}
             className={`rounded text-secondary text-center
-        ${
-          itemArray[currentItem].experience === 'normal' ? 'bg-secondary' : null
-        }
-        ${
-          itemArray[currentItem].experience === 'high' ? 'bg-secondary-2' : null
-        }
+        ${itemArray[currentItem].experience === 1 ? 'bg-secondary' : null}
+        ${itemArray[currentItem].experience === 2 ? 'bg-secondary-2' : null}
         outline-none duration-500 text-left m-auto px-4 py-2`}
           >
             {itemArray[currentItem].value}
