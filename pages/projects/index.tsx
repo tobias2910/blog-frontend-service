@@ -1,50 +1,13 @@
 import React from 'react';
-
 import type { InferGetStaticPropsType } from 'next';
 
 import ProjectCard from '@components/common/ProjectCard';
-import { Token } from '../../typings/token';
+import fetchData from 'utils/api/fetchData';
 import { Project } from '../../typings/project';
 
 export const getStaticProps = async () => {
-  const authRes = await fetch(
-    `${process.env.BLOG_RESTAPI_URL}/api/v1/auth/login`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: process.env.API_USERNAME,
-        password: process.env.API_PASSWORD,
-      }),
-    }
-  );
-  const token: Token = await authRes.json();
+  const projects = await fetchData<Project[]>('projects');
 
-  if (!authRes.ok) {
-    throw new Error(
-      `Failed to fetch auth token. Error code ${authRes.statusText}`
-    );
-  }
-
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token.access_token.token}`,
-  });
-
-  const projectsRes = await fetch(
-    `${process.env.BLOG_RESTAPI_URL}/api/v1/projects/`,
-    { headers }
-  );
-
-  if (!projectsRes.ok) {
-    throw new Error(
-      `Failed to fetch new skills. Error code ${projectsRes.statusText}`
-    );
-  }
-
-  const projects: Project[] = await projectsRes.json();
   return {
     props: {
       projects,
