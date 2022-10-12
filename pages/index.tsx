@@ -1,6 +1,7 @@
 import React from 'react';
 import { InferGetStaticPropsType } from 'next';
 
+import fetchData from 'utils/api/fetchData';
 import TypeWritingEffect from '@components/common/TypeWritingEffect';
 import Introduction from '@components/Introduction';
 import ArrowDown from '@components/common/ArrowDown';
@@ -11,47 +12,10 @@ import groupArray from 'utils/groupArray';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
 import { GroupedSkills, Skill } from '../typings/skill';
-import { Token } from '../typings/token';
 
 export const getStaticProps = async () => {
-  const authRes = await fetch(
-    `${process.env.BLOG_RESTAPI_URL}/api/v1/auth/login`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: process.env.API_USERNAME,
-        password: process.env.API_PASSWORD,
-      }),
-    }
-  );
-  const token: Token = await authRes.json();
+  const skills = await fetchData<Skill[]>('skills');
 
-  if (!authRes.ok) {
-    throw new Error(
-      `Failed to fetch auth token. Error code ${authRes.statusText}`
-    );
-  }
-
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token.access_token.token}`,
-  });
-
-  const skillRes = await fetch(
-    `${process.env.BLOG_RESTAPI_URL}/api/v1/skills/`,
-    { headers }
-  );
-
-  if (!skillRes.ok) {
-    throw new Error(
-      `Failed to fetch new skills. Error code ${skillRes.statusText}`
-    );
-  }
-
-  const skills: Skill[] = await skillRes.json();
   const skillsGrouped: GroupedSkills = groupArray(skills, 'category');
 
   return {
