@@ -26,10 +26,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
   tags,
   projectUrl,
 }) => (
-  <div className="w-[20rem] md:w-96 h-96 md:h-96">
+  <div className="w-96 h-96">
     <Card className="h-full w-full">
       <div className="flex flex-col items-center h-full relative">
-        <span className="text-lg md:text-xl underline decoration-secondary-2 font-semibold mb-4 h-5">
+        <span className="text-xl underline decoration-secondary-2 font-semibold mb-4 h-5">
           {title}
         </span>
         <div className="h-36 w-full relative mb-3">
@@ -40,7 +40,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
             layout="fill"
           />
         </div>
-        <span className="text-center text-xs md:text-base h-20 md:h-20 mb-1">
+        <span className="text-center  text-base h-20 md:h-20 mb-1">
           {description}
         </span>
         <a

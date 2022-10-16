@@ -27,9 +27,17 @@ module.exports = {
         depth: 3,
       },
     ],
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton'],
+      },
+    ],
     'react/function-component-definition': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'no-restricted-exports': 'off',
     'react/prop-types': 'off',
   },
-}
+};
