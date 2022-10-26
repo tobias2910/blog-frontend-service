@@ -1,0 +1,11 @@
+.root {
+  @apply w-full;
+}
+
+.firstHeader {
+  @apply text-3xl font-semibold mb-2;
+}
+
+.secondHeader {
+  @apply text-2xl font-semibold my-2;
+}

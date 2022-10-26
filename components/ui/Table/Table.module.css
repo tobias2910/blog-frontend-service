@@ -1,0 +1,11 @@
+.table {
+  @apply table-auto w-full border rounded-lg border-secondary-2 border-separate my-2;
+}
+
+.tableHead {
+  @apply underline decoration-secondary underline-offset-4 py-2 text-xl;
+}
+
+.tableData {
+  @apply hover:bg-secondary-2 hover:text-secondary rounded w-1/2 p-2 pl-2 duration-300;
+}

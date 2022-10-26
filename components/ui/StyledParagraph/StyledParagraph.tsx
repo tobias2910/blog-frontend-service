@@ -27,15 +27,6 @@ const StyledParagraph: FC<StyledParagraphProps> = ({
   const paragraphRef = useRef<HTMLParagraphElement>(null);
   const isOnScreen = useOnScreen(paragraphRef, fireOnes);
 
-  // if (paragraphRef.current) {
-  //   const { offsetTop, clientHeight } = paragraphRef.current;
-  //   const { innerHeight } = window;
-  //   // Middle of the screen
-  //   const halfHeight = innerHeight / 2;
-  //   const scrollProgress = scrollY + halfHeight;
-  //   opacityLevel = showFullOpacity(scrollProgress, offsetTop, clientHeight);
-  // }
-
   const innerClassName = cn(
     s.root,
     { [s.showParagraph]: isOnScreen },

@@ -1,21 +1,30 @@
-import React, { FC, ReactNode } from 'react'
-import cn from 'clsx'
+import React, { FC, ReactNode } from 'react';
+import cn from 'clsx';
 
-import s from './Card.module.css'
+import s from './Card.module.css';
 
 interface CardProps {
-  children: ReactNode
-  className?: string
+  children: ReactNode;
+  className?: string;
+  onClickHandler?: () => void;
 }
 
-const Card: FC<CardProps> = ({ children, className }) => {
-  const innerClassName = cn(s.root, className)
+const Card: FC<CardProps> = ({ children, className, onClickHandler }) => {
+  const innerClassName = cn(s.root, className, {
+    [s.clickable]: onClickHandler,
+  });
 
-  return <div className={innerClassName}>{children}</div>
-}
+  return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div className={innerClassName} onClick={onClickHandler}>
+      {children}
+    </div>
+  );
+};
 
 Card.defaultProps = {
   className: '',
-}
+  onClickHandler: undefined,
+};
 
-export default Card
+export default Card;
