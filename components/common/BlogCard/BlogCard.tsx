@@ -37,7 +37,7 @@ const BlogCard: FC<BlogCardProps> = ({
             {title}
           </p>
           <p className="text-justify">{description}</p>
-          <p className="text-xs absolute bottom-0 text-secondary-2">
+          <p className="text-xs absolute bottom-0 text-primary-2">
             Posted by {author} on {createdAt}
           </p>
         </div>

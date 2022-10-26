@@ -7,8 +7,8 @@
   --hover: #44bba4;
   --text-base: #000000;
   --text-primary: #000000;
+  --text-primary-2: #6e6e6e;
   --text-secondary: rgb(255, 255, 255);
-  --text-secondary-2: #6e6e6e;
   --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
     'Helvetica', sans-serif;
 }
@@ -22,8 +22,8 @@
   --hover: #afb3f7;
   --text-base: white;
   --text-primary: white;
+  --text-primary-2: #b3b3b3;
   --text-secondary: black;
-  --text-secondary-2: #b3b3b3;
 }
 
 /* Replace default browser styling for auto fill fields */
