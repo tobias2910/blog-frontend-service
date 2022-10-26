@@ -45,8 +45,10 @@ const Chip: FC<ChipProps> = ({ text, Icon, type, iconSize }) => {
       role="button"
       tabIndex={0}
     >
-      <Icon className={iconClassName} />
-      <span className="text-center m-auto">{text}</span>
+      <div className="w-1/6">
+        <Icon className={iconClassName} />
+      </div>
+      <span className="w-5/6 text-center">{text}</span>
     </div>
   );
 };

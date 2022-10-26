@@ -1,34 +1,35 @@
-import React, { FC } from 'react'
-import { useRouter } from 'next/router'
-import { motion } from 'framer-motion'
-import BarItem from '../../ui/BarItem'
+import React, { FC } from 'react';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import BarItem from '../../ui/BarItem';
 
-type AlignmentOptions = 'left' | 'middle'
+type AlignmentOptions = 'left' | 'middle';
 
 interface NavigationItemsProps {
-  items: string[]
-  alignment: AlignmentOptions
+  items: string[];
+  alignment: AlignmentOptions;
 }
 
 const NavigationItems: FC<NavigationItemsProps> = (props) => {
-  const { items, alignment } = props
+  const { items, alignment } = props;
 
-  const router = useRouter()
+  const router = useRouter();
 
   const isSelected = (barItemName: string) =>
     !!(
       router.asPath.includes(barItemName.toLowerCase()) ||
       (router.asPath === '/' && barItemName === 'Home')
-    )
+    );
 
   const handleItemOnClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const item = (event.target as HTMLButtonElement).id.toLowerCase()
+    const item = (event.target as HTMLButtonElement).id.toLowerCase();
+    console.log(item);
     if (item === 'home') {
-      router.push('./')
+      router.push('/');
     } else {
-      router.push(`./${item.toLowerCase()}`)
+      router.push(`/${item.toLowerCase()}`);
     }
-  }
+  };
 
   return (
     <ul
@@ -54,7 +55,7 @@ const NavigationItems: FC<NavigationItemsProps> = (props) => {
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default NavigationItems
+export default NavigationItems;

@@ -4,6 +4,7 @@ import {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from 'next';
+import { useTheme } from 'next-themes';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -11,7 +12,6 @@ import rehypeHighlight from 'rehype-highlight';
 import Article from '@components/Article';
 import fetchData from 'utils/api/fetchData';
 import { Article as ArticleType } from 'typings/article';
-import { useTheme } from 'next-themes';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await fetchData<ArticleType[]>('articles');
@@ -54,15 +54,15 @@ const BlogPage = ({
   const { theme } = useTheme();
 
   return (
-    <div className="flex justify-center align-middle">
+    <article className="flex flex-col w-full">
       <link
         rel="stylesheet"
         href={`https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/panda-syntax-${
           theme === 'light' ? 'light' : 'dark'
         }.min.css`}
       />
-      <Article content={article.content} />
-    </div>
+      <Article data={article} />
+    </article>
   );
 };
 

@@ -17,6 +17,7 @@ module.exports = {
         baseColor: 'var(--text-base)',
         primary: 'var(--text-primary)',
         secondary: 'var(--text-secondary)',
+        'secondary-2': 'var(--text-secondary-2)',
       },
       animation: {
         'fadeIn-left': 'fadeIn-left .3s ease forwards',

@@ -6,12 +6,12 @@ import Card from '@components/ui/Card';
 import Chip from '@components/ui/Chip';
 import { Tag } from '../../../typings/project';
 
-interface ProjectCardProps {
+interface PostCardProps {
   title: string;
   imageUrl: string;
   description: string;
   tags: Tag[];
-  projectUrl: string;
+  targetUrl: string;
 }
 
 /**
@@ -19,17 +19,17 @@ interface ProjectCardProps {
  * @param param0
  * @returns
  */
-const ProjectCard: FC<ProjectCardProps> = ({
+const ProjectCard: FC<PostCardProps> = ({
   title,
   imageUrl,
   description,
   tags,
-  projectUrl,
+  targetUrl,
 }) => (
   <div className="w-96 h-96">
     <Card className="h-full w-full">
       <div className="flex flex-col items-center h-full relative">
-        <span className="text-xl underline decoration-secondary-2 font-semibold mb-4 h-5">
+        <span className="text-xl underline underline-offset-2 decoration-secondary font-semibold mb-4 h-5">
           {title}
         </span>
         <div className="h-36 w-full relative mb-3">
@@ -45,14 +45,14 @@ const ProjectCard: FC<ProjectCardProps> = ({
         </span>
         <a
           className="flex border-secondary rounded-sm justify-center items-center border font-semibold md:border text-xs md:text-sm w-28 h-7 md:w-32 md:h-8 text-center hover:border-secondary-2 transition-colors duration-500 ease-linear"
-          href={projectUrl}
+          href={targetUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
           Show project
         </a>
         <div className="bottom-0 absolute w-full">
-          <hr className="border-1 rounded w-full border-secondary-2 my-2" />
+          <hr className="border-1 rounded w-full border-secondary my-2" />
           <div className="flex flex-wrap mb-1 justify-around w-full">
             {tags.slice(0, 3).map((tag) => (
               <Chip

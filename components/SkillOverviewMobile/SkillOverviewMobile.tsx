@@ -89,7 +89,7 @@ const SkillOverviewMobile: FC<SkillOverviewProps> = ({ skillData }) => {
   return (
     <div
       ref={skillTableRef}
-      className="flex flex-nowrap text-xl md:text-4xl items-center justify-between py-16 w-full h-full rounded-lg border-2 border-secondary-2"
+      className="flex flex-nowrap text-lg md:text-4xl items-center justify-between py-16 w-full h-full rounded-lg border-2 border-secondary-2"
     >
       {currentCategory}
       {currentSkill}
