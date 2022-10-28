@@ -26,51 +26,47 @@ const ProjectCard: FC<PostCardProps> = ({
   tags,
   targetUrl,
 }) => (
-  <div className="w-96 h-96">
-    <Card className="h-full w-full">
-      <div className="flex flex-col items-center h-full relative">
-        <span className="text-xl underline underline-offset-2 decoration-secondary font-semibold mb-4 h-5">
-          {title}
-        </span>
-        <div className="h-36 w-full relative mb-3">
-          <Image
-            src={imageUrl}
-            className="rounded"
-            about="image of the Project"
-            layout="fill"
-          />
-        </div>
-        <span className="text-center  text-base h-20 md:h-20 mb-1">
-          {description}
-        </span>
+  <Card className="h-full w-full">
+    <div className="flex flex-col items-center relative h-[22rem] w-full">
+      <span className="text-xl underline underline-offset-2 decoration-secondary font-semibold mb-4 h-5">
+        {title}
+      </span>
+      <div className="h-32 w-5/6 relative mb-3">
+        <Image
+          src={imageUrl}
+          className="rounded"
+          about="image of the Project"
+          layout="fill"
+        />
+      </div>
+      <span className="text-center text-base mb-1">{description}</span>
+      <div className="bottom-0 absolute w-full">
         <a
-          className="flex border-secondary rounded-sm justify-center items-center border font-semibold md:border text-xs md:text-sm w-28 h-7 md:w-32 md:h-8 text-center hover:border-secondary-2 transition-colors duration-500 ease-linear"
+          className="flex border-secondary m-auto mb-3 rounded-sm justify-center items-center border font-semibold md:border text-xs md:text-sm w-28 h-7 md:w-32 md:h-8 text-center hover:border-secondary-2 transition-colors duration-500 ease-linear"
           href={targetUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
           Show project
         </a>
-        <div className="bottom-0 absolute w-full">
-          <hr className="border-1 rounded w-full border-secondary my-2" />
-          <div className="flex flex-wrap mb-1 justify-around w-full">
-            {tags.slice(0, 3).map((tag) => (
-              <Chip
-                key={tag.name}
-                // @ts-ignore
-                Icon={dynamic(() =>
-                  import('react-icons/si').then((mod) => mod[tag.icon_name])
-                )}
-                text={tag.name}
-                iconSize="medium"
-                type="standard"
-              />
-            ))}
-          </div>
+        <hr className="border-1 rounded w-full border-secondary my-2" />
+        <div className="flex flex-wrap mb-1 justify-around w-full">
+          {tags.slice(0, 3).map((tag) => (
+            <Chip
+              key={tag.name}
+              // @ts-ignore
+              Icon={dynamic(() =>
+                import('react-icons/si').then((mod) => mod[tag.icon_name])
+              )}
+              text={tag.name}
+              iconSize="medium"
+              type="standard"
+            />
+          ))}
         </div>
       </div>
-    </Card>
-  </div>
+    </div>
+  </Card>
 );
 
 export default ProjectCard;
