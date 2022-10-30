@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
 const Blog = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <div className="grid grid-cols-1 md:grid-cols-2 grid-flow-row gap-2 justify-center">
     {articles.map((article) => (
-      <div key={article.id} className="justify-self-center w-full">
+      <div key={article.id} className="justify-self-center">
         <BlogCard
           author={article.author}
           createdAt={article.created_at}

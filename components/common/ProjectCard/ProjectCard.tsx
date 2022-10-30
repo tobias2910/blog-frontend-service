@@ -27,7 +27,7 @@ const ProjectCard: FC<PostCardProps> = ({
   targetUrl,
 }) => (
   <Card className="h-full w-full">
-    <div className="flex flex-col items-center relative h-[22rem] w-full">
+    <div className="flex flex-col items-center relative h-[22rem] max-w-[22rem] w-full">
       <span className="text-xl underline underline-offset-2 decoration-secondary font-semibold mb-4 h-5">
         {title}
       </span>
