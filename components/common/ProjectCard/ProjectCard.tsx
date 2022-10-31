@@ -42,7 +42,7 @@ const ProjectCard: FC<PostCardProps> = ({
       <span className="text-center text-base mb-1">{description}</span>
       <div className="bottom-0 absolute w-full">
         <a
-          className="flex border-secondary m-auto mb-3 rounded-sm justify-center items-center border font-semibold md:border text-xs md:text-sm w-28 h-7 md:w-32 md:h-8 text-center hover:border-secondary-2 transition-colors duration-500 ease-linear"
+          className="flex border-secondary outline-none focus:border-secondary-2 m-auto mb-3 rounded-sm justify-center items-center border font-semibold md:border text-xs md:text-sm w-28 h-7 md:w-32 md:h-8 text-center hover:border-secondary-2 transition-colors duration-500 ease-linear"
           href={targetUrl}
           target="_blank"
           rel="noopener noreferrer"

@@ -7,5 +7,5 @@
 }
 
 .root:focus {
-  @apply border-secondary;
+  @apply text-teal-400;
 }
