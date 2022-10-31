@@ -30,9 +30,9 @@ const BlogCard: FC<BlogCardProps> = ({
   };
 
   return (
-    <Card className="h-full w-full" onClickHandler={handleOnClick}>
+    <Card onClickHandler={handleOnClick}>
       <div className="flex flex-col w-full max-w-[22rem]">
-        <div className="w-full ml-2 h-40 relative">
+        <div className="w-full px-2 h-40 relative">
           <p className="text-lg font-bold underline underline-offset-4 decoration-secondary mb-2">
             {title}
           </p>
