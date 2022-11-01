@@ -21,6 +21,7 @@ module.exports = {
       },
       animation: {
         'fadeIn-left': 'fadeIn-left .3s ease forwards',
+        'fadeOut-left': 'fadeOut-left .3s ease forwards',
         'fadeIn-up': 'fadeIn-up 1.5s ease forwards',
         'fadeIn-down': 'fadeIn-down 1s ease forwards',
         typingIndicator: 'typingIndicator .7s ease-in infinite',
@@ -34,6 +35,16 @@ module.exports = {
           to: {
             opacity: 1,
             transform: 'translate3d(0, 0, 0)',
+          },
+        },
+        'fadeOut-left': {
+          from: {
+            opacity: 1,
+            transform: 'translate3d(0, 0, 0)',
+          },
+          to: {
+            opacity: 0,
+            transform: 'translate3d(-100%, 0, 0)',
           },
         },
         'fadeIn-up': {
