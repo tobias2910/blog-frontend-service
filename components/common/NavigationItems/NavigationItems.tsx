@@ -15,14 +15,11 @@ const NavigationItems: FC<NavigationItemsProps> = (props) => {
 
   const router = useRouter();
 
-  const isSelected = (barItemName: string) => {
-    console.log(router.asPath);
-
-    return !!(
+  const isSelected = (barItemName: string) =>
+    !!(
       router.asPath.includes(barItemName.toLowerCase()) ||
       (router.asPath === '/' && barItemName === 'Home')
     );
-  };
 
   const handleItemOnClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const item = (event.target as HTMLButtonElement).id.toLowerCase();
