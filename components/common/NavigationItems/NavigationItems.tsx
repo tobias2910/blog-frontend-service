@@ -23,7 +23,6 @@ const NavigationItems: FC<NavigationItemsProps> = (props) => {
 
   const handleItemOnClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const item = (event.target as HTMLButtonElement).id.toLowerCase();
-    console.log(item);
     if (item === 'home') {
       router.push('/');
     } else {
